@@ -1,3 +1,4 @@
 .idea/
 .vscode
 public_html/uploads/*.png
+/**/*.zip

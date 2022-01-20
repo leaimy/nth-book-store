@@ -2,6 +2,7 @@
 
 namespace BookStore;
 
+use BookStore\Controller\Admin\DashboardController;
 use BookStore\Controller\Client\HomeController;
 use BookStore\Controller\Client\ProfileController;
 use Ninja\NJInterface\IRoutes;
@@ -9,9 +10,9 @@ use Ninja\NJInterface\IRoutes;
 class BookStoreRouteHandler implements IRoutes
 {
     // Tạo các trường DatabaseTable
-    
+
     // Tạo các trường Models
-    
+
     public function __construct()
     {
     }
@@ -20,7 +21,9 @@ class BookStoreRouteHandler implements IRoutes
     {
         $home_controller = new HomeController();
         $profile_controller = new  ProfileController();
-        
+
+        $dashboard_controller = new DashboardController();
+
         return [
             '/' => [
                 'GET' => [
@@ -33,10 +36,19 @@ class BookStoreRouteHandler implements IRoutes
                     'controller' => $profile_controller,
                     'action' => 'render_profile_dashboard_page'
                 ]
+            ],
+            '/admin' => [
+                'REDIRECT' => '/admin/dashboard'
+            ],
+            '/admin/dashboard' => [
+                'GET' => [
+                    'controller' => $dashboard_controller,
+                    'action' => 'index'
+                ]
             ]
         ];
     }
-    
+
     public function getAuthentication(): ?\Ninja\Authentication
     {
         return null;

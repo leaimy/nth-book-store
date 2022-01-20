@@ -4,8 +4,6 @@
 
 {% block content %}
 
-
-
         <!--====== Section 1 ======-->
         <div class="u-s-p-y-60">
 

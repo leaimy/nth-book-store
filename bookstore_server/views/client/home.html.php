@@ -1,4 +1,4 @@
-{% extends client/master.html.php %}
+{% extends client/master_home.html.php %}
 
 {% block title %} NTH Book Store {% endblock %}
 

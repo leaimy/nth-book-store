@@ -37,7 +37,7 @@
     <div class="header-wrapper">
 
         <!--====== Main Header ======-->
-        <header class="header--style-3">
+        <header class="header--style-3 ">
 
             <!--====== Nav 1 ======-->
             <nav class="primary-nav-wrapper">
@@ -84,7 +84,7 @@
                                         <!--====== Dropdown ======-->
 
                                         <span class="js-menu-toggle"></span>
-                                        <ul style="width:120px">
+                                        <ul style="width:auto">
                                             <li>
 
                                                 <a href="/my-profile"><i class="fas fa-user-circle u-s-m-r-6"></i>

@@ -221,7 +221,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="pages/widgets.html" class="nav-link">
+                        <a href="/admin/category" class="nav-link">
                             <i class="nav-icon far fa-snowflake"></i>
                             <p>
                                 Thể loại

@@ -5,7 +5,7 @@ NTH Book Store - Admin
 {% endblock %}
 
 {% block header %}
-Dashboard
+Tổng quan
 {% endblock %}
 
 {% block content %}

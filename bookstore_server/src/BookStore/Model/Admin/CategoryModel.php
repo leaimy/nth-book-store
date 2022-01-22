@@ -34,4 +34,17 @@ class CategoryModel
             CategoryEntity::KEY_DESCRIPTION => $args[CategoryEntity::KEY_DESCRIPTION] ?? null,
         ]);
     }
+    
+    public function update_category($id, $args)
+    {
+        return $this->category_table->save([
+            CategoryEntity::KEY_ID => $id,
+            CategoryEntity::KEY_NAME => $args[CategoryEntity::KEY_NAME],
+            CategoryEntity::KEY_DESCRIPTION => $args[CategoryEntity::KEY_DESCRIPTION] ?? null,
+        ]);
+    }
+    
+    public function delete_category($id){
+        $this->category_table->delete($id);
+    }
 }

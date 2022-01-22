@@ -84,6 +84,22 @@ class BookStoreRouteHandler implements IRoutes
                     'action' => 'store'
                 ],
             ],
+            '/admin/category/edit' => [
+                'GET' => [
+                    'controller' => $category_controller,
+                    'action' => 'edit'
+                ],
+                'POST' => [
+                    'controller' => $category_controller,
+                    'action' => 'update'
+                ],
+            ],
+            '/admin/category/delete' => [
+                'GET' => [
+                    'controller' => $category_controller,
+                    'action' => 'delete'
+                ],
+            ],
         ];
     }
 

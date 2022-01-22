@@ -52,4 +52,44 @@ class CategoryController extends NJBaseController
             // Xử lý lỗi từ hệ thống server / PHP
         }
     }
+
+    public function edit()
+    {
+        $id = $_GET['id'];
+        $category = $this->category_model->get_by_id_category($id);
+        $this->view_handler->render('admin/category/edit.html.php',[
+            'category' => $category,
+        ]);
+    }
+    
+    public function update()
+    {
+        try {
+            $category = $_POST;
+            $id = $_POST['id'];
+            
+            $this->category_model->update_category($id, $category);
+            $this->route_redirect('/admin/category');
+            
+        }  catch (NinjaException $e) {
+            // Xử lý lỗi do mình tự ném ra
+
+            $this->view_handler->render('admin/category/create.html.php', [
+                'name' => $_POST['name'] ?? null,
+                'description' => $_POST['description'] ?? null,
+                'error' => true,
+                'message' => $e->getMessage(),
+            ]);
+        } catch (Exception $e) {
+            // Xử lý lỗi từ hệ thống server / PHP
+        }
+        
+    }
+    
+    public function delete()
+    {
+        $id = $_GET['id'];
+        $this->category_model->delete_category($id);
+        $this->route_redirect('/admin/category');
+    }
 }

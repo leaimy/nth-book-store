@@ -80,8 +80,8 @@ Quản lý thể loại
                             <td><?=$item->name?></td>
                             <td><?=$item->description?></td>
                             <td>
-                                <a style="color: hotpink" href="#"><i class="far fa-edit"></i></a>
-                                <a style="color: darkturquoise" href="#"><i class="fas fa-trash-alt"></i></a>
+                                <a style="color: hotpink" href="/admin/category/edit?id=<?=$item->id?>"><i class="far fa-edit"></i></a>
+                                <a style="color: darkturquoise" href="/admin/category/delete?id=<?=$item->id?>"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                    <?php endforeach;?>

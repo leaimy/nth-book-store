@@ -2,6 +2,7 @@
 
 namespace BookStore;
 
+use BookStore\Controller\Admin\AuthorController;
 use BookStore\Controller\Admin\CategoryController;
 use BookStore\Controller\Admin\DashboardController;
 use BookStore\Controller\Client\HomeController;
@@ -38,6 +39,7 @@ class BookStoreRouteHandler implements IRoutes
          */
         $dashboard_controller = new DashboardController();
         $category_controller = new CategoryController($this->admin_category_model);
+        $author_controller = new AuthorController();
 
         return [
             /*
@@ -68,6 +70,8 @@ class BookStoreRouteHandler implements IRoutes
                     'action' => 'index'
                 ]
             ],
+            
+            // Category => thể loại
             '/admin/category' => [
                 'GET' => [
                     'controller' => $category_controller,
@@ -95,6 +99,40 @@ class BookStoreRouteHandler implements IRoutes
                 ],
             ],
             '/admin/category/delete' => [
+                'GET' => [
+                    'controller' => $category_controller,
+                    'action' => 'delete'
+                ],
+            ],
+            
+            // Author => tác giả
+            '/admin/author' => [
+                'GET' => [
+                    'controller' => $category_controller,
+                    'action' => 'index'
+                ]
+            ],
+            '/admin/author/create' => [
+                'GET' => [
+                    'controller' => $category_controller,
+                    'action' => 'create'
+                ],
+                'POST' => [
+                    'controller' => $category_controller,
+                    'action' => 'store'
+                ],
+            ],
+            '/admin/author/edit' => [
+                'GET' => [
+                    'controller' => $category_controller,
+                    'action' => 'edit'
+                ],
+                'POST' => [
+                    'controller' => $category_controller,
+                    'action' => 'update'
+                ],
+            ],
+            '/admin/author/delete' => [
                 'GET' => [
                     'controller' => $category_controller,
                     'action' => 'delete'

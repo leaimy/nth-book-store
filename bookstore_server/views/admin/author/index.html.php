@@ -1,22 +1,22 @@
 {% extends admin/master.html.php %}
 
 {% block title %}
-NTH Book Store - Admin - Thể loại
+NTH Book Store - Admin - Tác giả
 {% endblock %}
 
 {% block header %}
-Quản lý thể loại
+Quản lý tác giả
 {% endblock %}
 
 {% block content %}
 <div class="card card-secondary">
     <div class="card-header">
-                <h3 class="card-title">Danh sách thể loại</h3>
+        <h3 class="card-title">Danh sách tác giả</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
         <div class="d-flex justify-content-end">
-            <a class="btn btn-outline-success" href="/admin/category/create">Thêm mới</a>
+            <a class="btn btn-outline-success" href="/admin/author/create">Thêm mới</a>
         </div>
         <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
             <div class="row">
@@ -58,29 +58,35 @@ Quản lý thể loại
                                 aria-label="Rendering engine: activate to sort column descending">#
                             </th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Browser: activate to sort column ascending">Tên thể loại
+                                aria-label="Browser: activate to sort column ascending">Tên tác giả
                             </th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                 aria-label="Platform(s): activate to sort column ascending">Mô tả
                             </th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                aria-label="Engine version: activate to sort column ascending">Hành động
+                                aria-label="Engine version: activate to sort column ascending">Hình ảnh
+                            </th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1">
+                                Hành động
                             </th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php $count = 1;
-                        foreach ($category_all as $item):?>
-                        <tr class="even">
-                            <td class="dtr-control sorting_1" tabindex="0"><?=$count++?></td>
-                            <td><?=$item->name?></td>
-                            <td><?=$item->description?></td>
-                            <td>
-                                <a class="text-warning" href="/admin/category/edit?id=<?=$item->id?>"><i class="far fa-edit"></i></a>
-                                <a class="text-danger" href="/admin/category/delete?id=<?=$item->id?>"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
-                   <?php endforeach;?>
+                        foreach ($author_all as $item):?>
+                            <tr class="even">
+                                <td class="dtr-control sorting_1" tabindex="0"><?=$count++?></td>
+                                <td><?=$item->name?></td>
+                                <td><?=$item->description?></td>
+                                <td>
+                                    <img style="height: 100px;" src="<?= $item->get_media_path() == null ? '/uploads/macdinh.png' : $item->get_media_path() ?>" alt="">
+                                </td>
+                                <td>
+                                    <a class="text-warning" href="/admin/author/edit?id=<?=$item->id?>"><i class="far fa-edit"></i></a>
+                                    <a class="text-danger" href="/admin/author/delete?id=<?=$item->id?>"><i class="fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                        <?php endforeach;?>
                         </tbody>
                         <tfoot>
                         <tr>

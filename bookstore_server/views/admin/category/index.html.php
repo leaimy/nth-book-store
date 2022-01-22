@@ -1,7 +1,7 @@
 {% extends admin/master.html.php %}
 
 {% block title %}
-NTH Book Store - Admin
+NTH Book Store - Admin - Thể loại
 {% endblock %}
 
 {% block header %}
@@ -15,7 +15,7 @@ Quản lý thể loại
                 <h3 class="card-title">Danh sách thể loại</h3>
             
             <div class="d-flex justify-content-end">
-                <a class="btn btn-outline-success" href="">Thêm mới</a>
+                <a class="btn btn-outline-success" href="/admin/category/create">Thêm mới</a>
             </div>
         
         

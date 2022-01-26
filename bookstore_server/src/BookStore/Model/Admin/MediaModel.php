@@ -4,7 +4,9 @@
 namespace BookStore\Model\Admin;
 
 
+use BookStore\Entity\Admin\MediaEntity;
 use Ninja\DatabaseTable;
+use Ninja\NinjaException;
 
 class MediaModel
 {

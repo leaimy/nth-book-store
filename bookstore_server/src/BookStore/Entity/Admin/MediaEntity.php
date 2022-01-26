@@ -8,7 +8,7 @@ class MediaEntity
 {
     const PRIMARY_KEY = 'id';
     const TABLE = 'media';
-    const CLASS_NAME = '\\EStudy\\Entity\\Admin\\MediaEntity';
+    const CLASS_NAME = '\\BookStore\\Entity\\Admin\\MediaEntity';
 
 
     const KEY_ID = 'id';

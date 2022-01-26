@@ -3,6 +3,7 @@
 
 namespace BookStore\Controller\Admin;
 
+use BookStore\Model\Admin\MediaModel;
 use Ninja\NJBaseController\NJBaseController;
 
 class MediaController extends NJBaseController

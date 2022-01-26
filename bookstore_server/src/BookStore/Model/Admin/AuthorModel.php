@@ -49,10 +49,15 @@ class AuthorModel
             ]);
         }
 
-        return $this->topic_table->save([
+        return $this->author_table->save([
             AuthorEntity::KEY_ID => $id,
             AuthorEntity::KEY_NAME => $args[AuthorEntity::KEY_NAME],
             AuthorEntity::KEY_DESCRIPTION => $args[AuthorEntity::KEY_DESCRIPTION] ?? null,
         ]);
+    }
+
+    public function delete_author($id)
+    {
+        $this->author_table->delete($id);
     }
 }

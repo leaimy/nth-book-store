@@ -91,8 +91,9 @@ Quản lý tác giả
                         <tfoot>
                         <tr>
                             <th rowspan="1" colspan="1">#</th>
-                            <th rowspan="1" colspan="1">Tên thể loại</th>
+                            <th rowspan="1" colspan="1">Tên tác giả</th>
                             <th rowspan="1" colspan="1">Mô tả</th>
+                            <th rowspan="1" colspan="1">Hình ảnh</th>
                             <th rowspan="1" colspan="1">Hành động</th>
                         </tr>
                         </tfoot>

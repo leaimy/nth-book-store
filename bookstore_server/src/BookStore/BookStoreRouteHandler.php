@@ -7,8 +7,12 @@ use BookStore\Controller\Admin\CategoryController;
 use BookStore\Controller\Admin\DashboardController;
 use BookStore\Controller\Client\HomeController;
 use BookStore\Controller\Client\ProfileController;
+use BookStore\Entity\Admin\AuthorEntity;
 use BookStore\Entity\Admin\CategoryEntity;
+use BookStore\Entity\Admin\MediaEntity;
+use BookStore\Model\Admin\AuthorModel;
 use BookStore\Model\Admin\CategoryModel;
+use BookStore\Model\Admin\MediaModel;
 use Ninja\DatabaseTable;
 use Ninja\NJInterface\IRoutes;
 
@@ -16,14 +20,26 @@ class BookStoreRouteHandler implements IRoutes
 {
     // Tạo các trường DatabaseTable
     private $admin_category_table;
+    private $admin_author_table;
+    private $admin_media_table;
 
     // Tạo các trường Models
     private $admin_category_model;
+    private $admin_author_model;
+    private $admin_media_model;
 
     public function __construct()
     {
         $this->admin_category_table = new DatabaseTable(CategoryEntity::TABLE, CategoryEntity::PRIMARY_KEY, CategoryEntity::CLASS_NAME);
         $this->admin_category_model = new CategoryModel($this->admin_category_table);
+        
+        $this->admin_media_table = new DatabaseTable(MediaEntity::TABLE, MediaEntity::PRIMARY_KEY, MediaEntity::CLASS_NAME);
+        $this->admin_media_model = new MediaModel($this->admin_media_table);
+        
+        $this->admin_author_table = new DatabaseTable(AuthorEntity::TABLE, AuthorEntity::PRIMARY_KEY, AuthorEntity::CLASS_NAME, [
+            &$this->admin_media_model,&$this->admin_author_model
+        ]);
+        $this->admin_author_model = new AuthorModel($this->admin_author_table);
     }
 
     public function getRoutes(): array
@@ -39,7 +55,7 @@ class BookStoreRouteHandler implements IRoutes
          */
         $dashboard_controller = new DashboardController();
         $category_controller = new CategoryController($this->admin_category_model);
-        $author_controller = new AuthorController();
+        $author_controller = new AuthorController($this->admin_author_model, $this->admin_media_model);
 
         return [
             /*
@@ -108,33 +124,33 @@ class BookStoreRouteHandler implements IRoutes
             // Author => tác giả
             '/admin/author' => [
                 'GET' => [
-                    'controller' => $category_controller,
+                    'controller' => $author_controller,
                     'action' => 'index'
                 ]
             ],
             '/admin/author/create' => [
                 'GET' => [
-                    'controller' => $category_controller,
+                    'controller' => $author_controller,
                     'action' => 'create'
                 ],
                 'POST' => [
-                    'controller' => $category_controller,
+                    'controller' => $author_controller,
                     'action' => 'store'
                 ],
             ],
             '/admin/author/edit' => [
                 'GET' => [
-                    'controller' => $category_controller,
+                    'controller' => $author_controller,
                     'action' => 'edit'
                 ],
                 'POST' => [
-                    'controller' => $category_controller,
+                    'controller' => $author_controller,
                     'action' => 'update'
                 ],
             ],
             '/admin/author/delete' => [
                 'GET' => [
-                    'controller' => $category_controller,
+                    'controller' => $author_controller,
                     'action' => 'delete'
                 ],
             ],

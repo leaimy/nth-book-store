@@ -27,6 +27,8 @@
     <link rel="stylesheet" href="/static/admin_assets/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="/static/admin_assets/plugins/summernote/summernote-bs4.min.css">
+
+    {% yield custom_styles %}
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -230,7 +232,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="pages/widgets.html" class="nav-link">
+                        <a href="/admin/author" class="nav-link">
                             <i class="nav-icon fab fa-canadian-maple-leaf"></i>
                             <p>
                                 Tác giả
@@ -351,5 +353,7 @@
 <script src="/static/admin_assets/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/static/admin_assets/dist/js/pages/dashboard.js"></script>
+
+{% yield custom_scrips %}
 </body>
 </html>

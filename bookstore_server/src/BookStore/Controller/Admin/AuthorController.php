@@ -10,9 +10,12 @@ use BookStore\Model\Admin\AuthorModel;
 use BookStore\Model\Admin\MediaModel;
 use Ninja\NinjaException;
 use Ninja\NJBaseController\NJBaseController;
+use Ninja\NJTrait\Jsonable;
 
 class AuthorController extends NJBaseController
 { 
+    use Jsonable;
+    
     private $author_model;
     private $media_model; 
 
@@ -113,5 +116,36 @@ class AuthorController extends NJBaseController
         $id = $_GET['id'];
         $this->author_model->delete_author($id);
         $this->route_redirect('/admin/author');
+    }
+    
+    public function store_api()
+    {
+        try {
+            $author = $_POST;
+            
+            if (isset($_FILES['file_upload'])) {
+                $new_media = $this->media_model->create_new_media($_FILES);
+                $media_id = $new_media->id;
+                $author[AuthorEntity::KEY_MEDIA_ID] = $media_id;
+            }
+
+            $new_author = $this->author_model->create_new_author($author);
+            
+            // Phản hồi người dùng mới ở dạng JSON về cho client
+            $this->response_json($new_author, 200);
+            
+        } catch (NinjaException $e) {
+            // Phản hồi JSON lỗi về cho client để client hiển thị lỗi lên cho người dùng
+            $this->response_json($e->getMessage(), 400);
+        } catch (Exception $e) {
+            // Phản hồi JSON lỗi về cho client để client hiển thị lỗi lên cho người 
+            $this->response_json("Server xảy ra lỗi không xác định, vui lòng thử lại sau", 500);
+        }
+    }
+    
+    public function get_all()
+    {
+        $author_all = $this->author_model->get_all_author();
+        $this->response_json($author_all,200);
     }
 }

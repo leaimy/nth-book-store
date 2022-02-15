@@ -5,14 +5,17 @@ namespace BookStore;
 use BookStore\Controller\Admin\AuthorController;
 use BookStore\Controller\Admin\CategoryController;
 use BookStore\Controller\Admin\DashboardController;
+use BookStore\Controller\Admin\ProductController;
 use BookStore\Controller\Client\HomeController;
 use BookStore\Controller\Client\ProfileController;
 use BookStore\Entity\Admin\AuthorEntity;
 use BookStore\Entity\Admin\CategoryEntity;
 use BookStore\Entity\Admin\MediaEntity;
+use BookStore\Entity\Admin\ProductEntity;
 use BookStore\Model\Admin\AuthorModel;
 use BookStore\Model\Admin\CategoryModel;
 use BookStore\Model\Admin\MediaModel;
+use BookStore\Model\Admin\ProductModel;
 use Ninja\DatabaseTable;
 use Ninja\NJInterface\IRoutes;
 
@@ -22,11 +25,14 @@ class BookStoreRouteHandler implements IRoutes
     private $admin_category_table;
     private $admin_author_table;
     private $admin_media_table;
+    private $admin_product_table;
+    
 
     // Tạo các trường Models
     private $admin_category_model;
     private $admin_author_model;
     private $admin_media_model;
+    private $admin_product_model;
 
     public function __construct()
     {
@@ -40,6 +46,11 @@ class BookStoreRouteHandler implements IRoutes
             &$this->admin_media_model,&$this->admin_author_model
         ]);
         $this->admin_author_model = new AuthorModel($this->admin_author_table);
+        
+        $this->admin_product_table = new DatabaseTable(ProductEntity::TABLE, ProductEntity::PRIMARY_KEY, ProductEntity::CLASS_NAME, [
+            &$this->admin_media_model, &$this->admin_product_model, &$this->admin_category_model, &$this->admin_author_model
+        ]);
+        $this->admin_product_model = new ProductModel($this->admin_product_table);
     }
 
     public function getRoutes(): array
@@ -56,6 +67,7 @@ class BookStoreRouteHandler implements IRoutes
         $dashboard_controller = new DashboardController();
         $category_controller = new CategoryController($this->admin_category_model);
         $author_controller = new AuthorController($this->admin_author_model, $this->admin_media_model);
+        $product_controller = new ProductController($this->admin_media_model, $this->admin_product_model, $this->admin_category_model, $this->admin_author_model);
 
         return [
             /*
@@ -121,6 +133,7 @@ class BookStoreRouteHandler implements IRoutes
                 ],
             ],
             
+
             // Author => tác giả
             '/admin/author' => [
                 'GET' => [
@@ -151,6 +164,53 @@ class BookStoreRouteHandler implements IRoutes
             '/admin/author/delete' => [
                 'GET' => [
                     'controller' => $author_controller,
+                    'action' => 'delete'
+                ],
+            ],
+            '/api/v1/admin/author/store' => [
+                'POST' => [
+                    'controller' => $author_controller,
+                    'action' => 'store_api'
+                ],
+            ],
+            '/api/v1/admin/author/get-all' => [
+                'GET' => [
+                    'controller' => $author_controller,
+                    'action' => 'get_all'
+                ],
+            ],
+            
+
+            // Product => sản phẩm sách
+            '/admin/product' => [
+                'GET' => [
+                    'controller' => $product_controller,
+                    'action' => 'index'
+                ]
+            ],
+            '/admin/product/create' => [
+                'GET' => [
+                    'controller' => $product_controller,
+                    'action' => 'create'
+                ],
+                'POST' => [
+                    'controller' => $product_controller,
+                    'action' => 'store'
+                ],
+            ],
+            '/admin/product/edit' => [
+                'GET' => [
+                    'controller' => $product_controller,
+                    'action' => 'edit'
+                ],
+                'POST' => [
+                    'controller' => $product_controller,
+                    'action' => 'update'
+                ],
+            ],
+            '/admin/product/delete' => [
+                'GET' => [
+                    'controller' => $product_controller,
                     'action' => 'delete'
                 ],
             ],

@@ -38,7 +38,7 @@ Quản lý tác giả
                             </div>
                             <div class="col-sm-2">
                                 <label class="border rounded p-2 bg-info text-white" for="file_upload">Chọn ảnh</label>
-                                <input class="" accept="image/*" hidden name="file_upload" id="file_upload" type="file" onchange="hienthianh(this); ">
+                                <input class="" accept="image/*" hidden name="file_upload" id="file_upload" type="file"  onchange="hienthianh(this); ">
                             </div>
                     </div>
                     <div class="text-center mb-1"><img id="image" src="" alt="" name="image_path"></div>

@@ -241,7 +241,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="pages/widgets.html" class="nav-link">
+                        <a href="/admin/product" class="nav-link">
                             <i class="nav-icon fas fa-sun"></i>
                             <p>
                                 Sách

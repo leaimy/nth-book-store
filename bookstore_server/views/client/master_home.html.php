@@ -1278,7 +1278,7 @@
 
                                                             <span class="mini-product__name">
 
-                                                                    <a href="product-detail.html">Nikon DSLR Camera 4k</a></span>
+                                                                    <a href="product-detail.html">Nikon DSLsliR Camera 4k</a></span>
 
                                                             <span class="mini-product__quantity">1 x</span>
 

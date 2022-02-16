@@ -6,7 +6,7 @@
 <!--====== Primary Slider ======-->
 <div class="s-skeleton s-skeleton--h-640 s-skeleton--bg-grey">
     <div class="owl-carousel primary-style-3" id="hero-slider">
-        <div class="hero-slide hero-slide--7">
+        <div class="hero-slide hero-slide--7" style='background-image: url("/static/anh/slide1.jpg")'>
             <div class="primary-style-3-wrap">
                 <div class="container">
                     <div class="row">
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
-        <div class="hero-slide hero-slide--8">
+        <div class="hero-slide hero-slide--8" style='background-image: url("/static/anh/slide2.jpg")'>
             <div class="primary-style-3-wrap">
                 <div class="container">
                     <div class="row">
@@ -52,7 +52,7 @@
                 </div>
             </div>
         </div>
-        <div class="hero-slide hero-slide--9">
+        <div class="hero-slide hero-slide--9" style='background-image: url("/static/anh/slide3.jpg")'>
             <div class="primary-style-3-wrap">
                 <div class="container">
                     <div class="row">
@@ -90,30 +90,30 @@
                     <div class="promotion-o">
                         <div class="aspect aspect--bg-grey aspect--square">
 
-                            <img class="aspect__img" src="/static/images/promo/promo-img-4.jpg" alt=""></div>
+                            <img class="aspect__img" src="/static/anh/c1.jpg" alt=""></div>
                         <div class="promotion-o__content">
 
-                            <a class="promotion-o__link btn--e-white-brand" href="shop-side-version-2.html">Women's Clothing</a></div>
+                            <a class="promotion-o__link btn--e-white-brand" href="shop-side-version-2.html">Kỹ năng sống</a></div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 u-s-m-b-30">
                     <div class="promotion-o">
                         <div class="aspect aspect--bg-grey aspect--square">
 
-                            <img class="aspect__img" src="/static/images/promo/promo-img-5.jpg" alt=""></div>
+                            <img class="aspect__img" src="/static/anh/c2.jpg" alt=""></div>
                         <div class="promotion-o__content">
 
-                            <a class="promotion-o__link btn--e-white-brand" href="shop-side-version-2.html">Fashion Accessories</a></div>
+                            <a class="promotion-o__link btn--e-white-brand" href="shop-side-version-2.html">Kiến thức tổng hợp</a></div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 u-s-m-b-30">
                     <div class="promotion-o">
                         <div class="aspect aspect--bg-grey aspect--square">
 
-                            <img class="aspect__img" src="/static/images/promo/promo-img-6.jpg" alt=""></div>
+                            <img class="aspect__img" src="/static/anh/c3.jpg" alt=""></div>
                         <div class="promotion-o__content">
 
-                            <a class="promotion-o__link btn--e-white-brand" href="shop-side-version-2.html">Men's Clothing</a></div>
+                            <a class="promotion-o__link btn--e-white-brand" href="shop-side-version-2.html">Thiếu nhi</a></div>
                     </div>
                 </div>
             </div>
@@ -137,10 +137,11 @@
                         <a class="i3-banner" href="shop-side-version-2.html">
                             <div class="aspect aspect--bg-grey-fb aspect--square">
 
-                                <img class="aspect__img i3-banner__img" src="/static/images/banners/i3-banner-1.jpg" alt=""></div>
+                                <img class="aspect__img i3-banner__img" src="/static/anh/900.jpg" alt=""></div>
                         </a></div>
                     <div class="col-lg-6 col-md-12">
                         <div class="row">
+                            <?php foreach ($product2 as $item):?>
                             <div class="col-lg-6 col-md-6 col-sm-6 u-s-m-b-30">
                                 <div class="product-short u-h-100">
                                     <div class="product-short__container">
@@ -148,49 +149,28 @@
 
                                             <a class="aspect aspect--bg-grey-fb aspect--square u-d-block" href="product-detail.html">
 
-                                                <img class="aspect__img product-short__img" src="/static/images/product/women/product14.jpg" alt=""></a></div>
+                                                <img class="aspect__img product-short__img" src="<?= $item->get_media_path() == null ? '/uploads/macdinh.png' : $item->get_media_path() ?>" alt=""></a></div>
                                         <div class="product-short__info">
 
-                                            <span class="product-short__price">$126.77</span>
+                                            <span class="product-short__price"><?= $item->sale_price ?>đ</span>
 
                                             <span class="product-short__name">
 
-                                                            <a href="product-detail.html">Women Shoes</a></span>
+                                                            <a href="product-detail.html"><?= $item->name ?></a></span>
 
                                             <span class="product-short__category">
 
-                                                            <a href="shop-side-version-2.html">Women Clothing</a></span></div>
+                                                            <a href="shop-side-version-2.html"><?= $item->get_category_name()?></a></span></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 u-s-m-b-30">
-                                <div class="product-short u-h-100">
-                                    <div class="product-short__container">
-                                        <div class="product-short__img-wrap">
-
-                                            <a class="aspect aspect--bg-grey-fb aspect--square u-d-block" href="product-detail.html">
-
-                                                <img class="aspect__img product-short__img" src="/static/images/product/men/product12.jpg" alt=""></a></div>
-                                        <div class="product-short__info">
-
-                                            <span class="product-short__price">$126.77</span>
-
-                                            <span class="product-short__name">
-
-                                                            <a href="product-detail.html">Men Leather Wallet</a></span>
-
-                                            <span class="product-short__category">
-
-                                                            <a href="shop-side-version-2.html">Men Clothing</a></span></div>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php endforeach;?>
                             <div class="col-lg-12">
 
                                 <a class="i3-banner" href="shop-side-version-2.html">
                                     <div class="aspect aspect--bg-grey-fb aspect--1048-334">
 
-                                        <img class="aspect__img i3-banner__img" src="/static/images/banners/i3-banner-2.jpg" alt=""></div>
+                                        <img class="aspect__img i3-banner__img" src="/static/anh/1048.jpg" alt=""></div>
                                 </a></div>
                         </div>
                     </div>
@@ -212,9 +192,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section__text-wrap">
-                        <h1 class="section__heading u-c-secondary u-s-m-b-12">RECENT PRODUCTS</h1>
+                        <h1 class="section__heading u-c-secondary u-s-m-b-12">SÁCH MỚI</h1>
 
-                        <span class="section__span u-c-silver">NEWLY ADDED PRODUCTS</span>
+                        <span class="section__span u-c-silver">SÁCH MỚI ĐƯỢC THÊM</span>
                     </div>
                 </div>
             </div>
@@ -227,13 +207,14 @@
     <div class="section__content">
         <div class="container">
             <div class="row">
+                <?php foreach ($product8 as $item): ?>
                 <div class="col-lg-3 col-md-4 col-sm-6 u-s-m-b-30">
                     <div class="product-r u-h-100">
                         <div class="product-r__container">
 
                             <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                <img class="aspect__img" src="/static/images/product/women/product5.jpg" alt=""></a>
+                                <img class="aspect__img" src="<?= $item->get_media_path() == null ? '/uploads/macdinh.png' : $item->get_media_path() ?>" alt=""></a>
                             <div class="product-r__action-wrap">
                                 <ul class="product-r__action-list">
                                     <li>
@@ -255,306 +236,21 @@
 
                                         <span class="product-r__category">
 
-                                            <a href="shop-side-version-2.html">Women Clothing</a></span>
+                                            <a href="shop-side-version-2.html"><?=$item->get_category_name()?></a></span>
                             <div class="product-r__n-p-wrap">
 
                                             <span class="product-r__name">
 
-                                                <a href="product-detail.html">New Dress A Nice Elegant</a></span>
+                                                <a href="product-detail.html"><?=$item->name?></a></span>
 
-                                <span class="product-r__price">$125.00</span></div>
+                                <span class="product-r__price"><?=$item->sale_price?>đ</span></div>
 
-                            <span class="product-r__description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
+                            <span class="product-r__description"><?=substr($item->description,0,50)?>...</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 u-s-m-b-30">
-                    <div class="product-r u-h-100">
-                        <div class="product-r__container">
-
-                            <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                <img class="aspect__img" src="/static/images/product/women/product6.jpg" alt=""></a>
-                            <div class="product-r__action-wrap">
-                                <ul class="product-r__action-list">
-                                    <li>
-
-                                        <a data-modal="modal" data-modal-id="#quick-look"><i class="fas fa-search-plus"></i></a></li>
-                                    <li>
-
-                                        <a data-modal="modal" data-modal-id="#add-to-cart"><i class="fas fa-plus-circle"></i></a></li>
-                                    <li>
-
-                                        <a href="signin.html"><i class="fas fa-heart"></i></a></li>
-                                    <li>
-
-                                        <a href="signin.html"><i class="fas fa-envelope"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-r__info-wrap">
-
-                                        <span class="product-r__category">
-
-                                            <a href="shop-side-version-2.html">Women Clothing</a></span>
-                            <div class="product-r__n-p-wrap">
-
-                                            <span class="product-r__name">
-
-                                                <a href="product-detail.html">New Dress B Nice Elegant</a></span>
-
-                                <span class="product-r__price">$125.00</span></div>
-
-                            <span class="product-r__description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 u-s-m-b-30">
-                    <div class="product-r u-h-100">
-                        <div class="product-r__container">
-
-                            <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                <img class="aspect__img" src="/static/images/product/women/product7.jpg" alt=""></a>
-                            <div class="product-r__action-wrap">
-                                <ul class="product-r__action-list">
-                                    <li>
-
-                                        <a data-modal="modal" data-modal-id="#quick-look"><i class="fas fa-search-plus"></i></a></li>
-                                    <li>
-
-                                        <a data-modal="modal" data-modal-id="#add-to-cart"><i class="fas fa-plus-circle"></i></a></li>
-                                    <li>
-
-                                        <a href="signin.html"><i class="fas fa-heart"></i></a></li>
-                                    <li>
-
-                                        <a href="signin.html"><i class="fas fa-envelope"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-r__info-wrap">
-
-                                        <span class="product-r__category">
-
-                                            <a href="shop-side-version-2.html">Women Clothing</a></span>
-                            <div class="product-r__n-p-wrap">
-
-                                            <span class="product-r__name">
-
-                                                <a href="product-detail.html">New Dress C Nice Elegant</a></span>
-
-                                <span class="product-r__price">$125.00</span></div>
-
-                            <span class="product-r__description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 u-s-m-b-30">
-                    <div class="product-r u-h-100">
-                        <div class="product-r__container">
-
-                            <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                <img class="aspect__img" src="/static/images/product/women/product8.jpg" alt=""></a>
-                            <div class="product-r__action-wrap">
-                                <ul class="product-r__action-list">
-                                    <li>
-
-                                        <a data-modal="modal" data-modal-id="#quick-look"><i class="fas fa-search-plus"></i></a></li>
-                                    <li>
-
-                                        <a data-modal="modal" data-modal-id="#add-to-cart"><i class="fas fa-plus-circle"></i></a></li>
-                                    <li>
-
-                                        <a href="signin.html"><i class="fas fa-heart"></i></a></li>
-                                    <li>
-
-                                        <a href="signin.html"><i class="fas fa-envelope"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-r__info-wrap">
-
-                                        <span class="product-r__category">
-
-                                            <a href="shop-side-version-2.html">Women Clothing</a></span>
-                            <div class="product-r__n-p-wrap">
-
-                                            <span class="product-r__name">
-
-                                                <a href="product-detail.html">New Dress D Nice Elegant</a></span>
-
-                                <span class="product-r__price">$125.00</span></div>
-
-                            <span class="product-r__description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 u-s-m-b-30">
-                    <div class="product-r u-h-100">
-                        <div class="product-r__container">
-
-                            <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                <img class="aspect__img" src="/static/images/product/men/product5.jpg" alt=""></a>
-                            <div class="product-r__action-wrap">
-                                <ul class="product-r__action-list">
-                                    <li>
-
-                                        <a data-modal="modal" data-modal-id="#quick-look"><i class="fas fa-search-plus"></i></a></li>
-                                    <li>
-
-                                        <a data-modal="modal" data-modal-id="#add-to-cart"><i class="fas fa-plus-circle"></i></a></li>
-                                    <li>
-
-                                        <a href="signin.html"><i class="fas fa-heart"></i></a></li>
-                                    <li>
-
-                                        <a href="signin.html"><i class="fas fa-envelope"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-r__info-wrap">
-
-                                        <span class="product-r__category">
-
-                                            <a href="shop-side-version-2.html">Men Clothing</a></span>
-                            <div class="product-r__n-p-wrap">
-
-                                            <span class="product-r__name">
-
-                                                <a href="product-detail.html">New Fashion A Nice Elegant</a></span>
-
-                                <span class="product-r__price">$125.00</span></div>
-
-                            <span class="product-r__description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 u-s-m-b-30">
-                    <div class="product-r u-h-100">
-                        <div class="product-r__container">
-
-                            <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                <img class="aspect__img" src="/static/images/product/men/product6.jpg" alt=""></a>
-                            <div class="product-r__action-wrap">
-                                <ul class="product-r__action-list">
-                                    <li>
-
-                                        <a data-modal="modal" data-modal-id="#quick-look"><i class="fas fa-search-plus"></i></a></li>
-                                    <li>
-
-                                        <a data-modal="modal" data-modal-id="#add-to-cart"><i class="fas fa-plus-circle"></i></a></li>
-                                    <li>
-
-                                        <a href="signin.html"><i class="fas fa-heart"></i></a></li>
-                                    <li>
-
-                                        <a href="signin.html"><i class="fas fa-envelope"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-r__info-wrap">
-
-                                        <span class="product-r__category">
-
-                                            <a href="shop-side-version-2.html">Men Clothing</a></span>
-                            <div class="product-r__n-p-wrap">
-
-                                            <span class="product-r__name">
-
-                                                <a href="product-detail.html">New Fashion B Nice Elegant</a></span>
-
-                                <span class="product-r__price">$125.00</span></div>
-
-                            <span class="product-r__description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 u-s-m-b-30">
-                    <div class="product-r u-h-100">
-                        <div class="product-r__container">
-
-                            <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                <img class="aspect__img" src="/static/images/product/men/product7.jpg" alt=""></a>
-                            <div class="product-r__action-wrap">
-                                <ul class="product-r__action-list">
-                                    <li>
-
-                                        <a data-modal="modal" data-modal-id="#quick-look"><i class="fas fa-search-plus"></i></a></li>
-                                    <li>
-
-                                        <a data-modal="modal" data-modal-id="#add-to-cart"><i class="fas fa-plus-circle"></i></a></li>
-                                    <li>
-
-                                        <a href="signin.html"><i class="fas fa-heart"></i></a></li>
-                                    <li>
-
-                                        <a href="signin.html"><i class="fas fa-envelope"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-r__info-wrap">
-
-                                        <span class="product-r__category">
-
-                                            <a href="shop-side-version-2.html">Men Clothing</a></span>
-                            <div class="product-r__n-p-wrap">
-
-                                            <span class="product-r__name">
-
-                                                <a href="product-detail.html">New Fashion C Nice Elegant</a></span>
-
-                                <span class="product-r__price">$125.00</span></div>
-
-                            <span class="product-r__description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 u-s-m-b-30">
-                    <div class="product-r u-h-100">
-                        <div class="product-r__container">
-
-                            <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                <img class="aspect__img" src="/static/images/product/men/product8.jpg" alt=""></a>
-                            <div class="product-r__action-wrap">
-                                <ul class="product-r__action-list">
-                                    <li>
-
-                                        <a data-modal="modal" data-modal-id="#quick-look"><i class="fas fa-search-plus"></i></a></li>
-                                    <li>
-
-                                        <a data-modal="modal" data-modal-id="#add-to-cart"><i class="fas fa-plus-circle"></i></a></li>
-                                    <li>
-
-                                        <a href="signin.html"><i class="fas fa-heart"></i></a></li>
-                                    <li>
-
-                                        <a href="signin.html"><i class="fas fa-envelope"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-r__info-wrap">
-
-                                        <span class="product-r__category">
-
-                                            <a href="shop-side-version-2.html">Men Clothing</a></span>
-                            <div class="product-r__n-p-wrap">
-
-                                            <span class="product-r__name">
-
-                                                <a href="product-detail.html">New Fashion D Nice Elegant</a></span>
-
-                                <span class="product-r__price">$125.00</span></div>
-
-                            <span class="product-r__description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach;?>
+               
             </div>
         </div>
     </div>

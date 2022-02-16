@@ -83,4 +83,12 @@ class ProductModel
         $this->product_table->delete($id);
     }
 
+    public function random_product($number)
+    {
+        $sql = "SELECT * FROM products
+                ORDER BY RAND()
+                LIMIT $number";
+        
+        return $this->product_table->raw($sql, DatabaseTable::FETCH_RAW_MULTIPLE);
+    }
 }

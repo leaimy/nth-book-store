@@ -58,7 +58,7 @@ class BookStoreRouteHandler implements IRoutes
         /*
          * Client
          */
-        $home_controller = new HomeController();
+        $home_controller = new HomeController($this->admin_product_model);
         $profile_controller = new  ProfileController();
 
         /*

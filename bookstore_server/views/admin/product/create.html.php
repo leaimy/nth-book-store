@@ -28,7 +28,7 @@ Quản lý sách
                     <div class="form-group row">
                         <label  class="col-sm-2 col-form-label">Thể loại</label>
                         <div class="col-sm-10">
-                        <select  name="category_id" class="form-control">
+                        <select  name="category_id" class="form-control" id="category_id_list">
                             <?php foreach ($category_all as $item):?>
                             <option value="<?=$item->id?>"><?=$item->name?></option>
                             <?php endforeach; ?>
@@ -99,7 +99,7 @@ Quản lý sách
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form id="theloai" class="form-horizontal" action="/admin/category/create" method="post" enctype="multipart/form-data">
+            <form id="theloai" class="form-horizontal" action="" method="post" >
                 <div class="card-body">
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-4 col-form-label">Tên thể loại</label>
@@ -210,6 +210,42 @@ Quản lý sách
         .catch(err => {
             alert(err)
         })
+    })
+    
+    btn_theloai.addEventListener('click', function (event){
+        event.preventDefault();
+        var tentheloai = input_theloai.value;
+        
+        var url_api = '/api/v1/admin/category/store'
+        
+        var phuongthuc = 'POST'
+
+        // Tao 1 form để chứa các dữ liệu cần gửi về server
+        var form1 = new FormData();
+        form1.append('name', tentheloai);
+
+        // Gửi form trên về server
+        fetch(url_api, {
+            method: phuongthuc,
+            body: form1
+        })
+            .then(byte => byte.json())
+            .then(result => {
+                var id_theloai = result.id
+
+                var categorylist = document.getElementById('category_id_list');
+
+                categorylist.querySelectorAll('option').forEach(function (option) {
+                    option.removeAttribute('selected');
+                });
+
+                var option_new = `<option value="${id_theloai}" selected>${tentheloai}</option>`;
+
+                categorylist.insertAdjacentHTML('beforeend', option_new);
+            })
+            .catch(err => {
+                alert(err)
+            })
     })
        
 </script>

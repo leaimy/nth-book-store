@@ -132,6 +132,12 @@ class BookStoreRouteHandler implements IRoutes
                     'action' => 'delete'
                 ],
             ],
+            '/api/v1/admin/category/store' => [
+                'POST' => [
+                    'controller' => $category_controller,
+                    'action' => 'store_api'
+                ],
+            ],
             
 
             // Author => tác giả

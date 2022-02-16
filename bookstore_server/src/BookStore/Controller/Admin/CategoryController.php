@@ -7,9 +7,12 @@ namespace BookStore\Controller\Admin;
 use BookStore\Model\Admin\CategoryModel;
 use Ninja\NinjaException;
 use Ninja\NJBaseController\NJBaseController;
+use Ninja\NJTrait\Jsonable;
 
 class CategoryController extends NJBaseController
 {
+    use Jsonable;
+    
     private $category_model;
 
     public function __construct(CategoryModel $category_model)
@@ -91,5 +94,23 @@ class CategoryController extends NJBaseController
         $id = $_GET['id'];
         $this->category_model->delete_category($id);
         $this->route_redirect('/admin/category');
+    }
+    
+    public function store_api()
+    {
+        try {
+            $category = $_POST;
+
+            $category_new = $this->category_model->create_new_category($category);
+
+            $this->response_json($category_new,200);
+        } catch (NinjaException $e) {
+            // Phản hồi JSON lỗi về cho client để client hiển thị lỗi lên cho người dùng
+            $this->response_json($e->getMessage(), 400);
+            
+        } catch (Exception $e) {
+            // Phản hồi JSON lỗi về cho client để client hiển thị lỗi lên cho người 
+            $this->response_json("Server xảy ra lỗi không xác định, vui lòng thử lại sau", 500);
+        }
     }
 }

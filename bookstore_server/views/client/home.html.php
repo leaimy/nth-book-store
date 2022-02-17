@@ -194,7 +194,7 @@
                     <div class="section__text-wrap">
                         <h1 class="section__heading u-c-secondary u-s-m-b-12">SÁCH MỚI</h1>
 
-                        <span class="section__span u-c-silver">SÁCH MỚI ĐƯỢC THÊM</span>
+                        <span class="section__span u-c-silver">SÁCH MỚI ĐƯỢC NHẬP</span>
                     </div>
                 </div>
             </div>
@@ -268,9 +268,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section__text-wrap">
-                        <h1 class="section__heading u-c-secondary u-s-m-b-12">BEST SELLING PRODUCT</h1>
+                        <h1 class="section__heading u-c-secondary u-s-m-b-12">SÁCH BÁN CHẠY NHẤT</h1>
 
-                        <span class="section__span u-c-silver u-s-m-b-16">FIND PRODUCTS THAT ARE MOST SELLING</span>
+                        <span class="section__span u-c-silver u-s-m-b-16">THEO THỂ LOẠI</span>
                     </div>
                 </div>
             </div>
@@ -306,7 +306,7 @@
                                     <div class="product-bs__container">
                                         <div class="product-bs__wrap">
 
-                                            <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
+                                            <a class="aspect aspect--bg-grey aspect--square u-d-block" href="/product/product-detail?id=<?=$item->id?>">
 
                                                 <img class="aspect__img" src="<?= $item->get_media_path() == null ? '/uploads/macdinh.png' : $item->get_media_path() ?>" alt=""></a>
                                             <div class="product-bs__action-wrap">
@@ -329,18 +329,14 @@
 
                                         <span class="product-bs__category">
 
-                                                        <a href="shop-side-version-2.html">Men Clothing</a></span>
+                                                        <a href="shop-side-version-2.html"><?= $item->get_category_name() ?></a></span>
 
                                         <span class="product-bs__name">
 
-                                                        <a href="product-detail.html">Black &amp; White Sweater</a></span>
-                                        <div class="product-bs__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                                        <a href="/product/product-detail?id=<?=$item->id?>"><?= $item->name ?></a></span>
+                                       
 
-                                            <span class="product-bs__review">(23)</span></div>
-
-                                        <span class="product-bs__price">$125.00
-
-                                                        <span class="product-bs__discount">$160.00</span></span>
+                                        <span class="product-r__price"><?= $item->sale_price?>đ </span>
                                     </div>
                                 </div>
                             </div>
@@ -349,11 +345,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <div class="load-more">
-
-                        <button class="btn btn--e-brand" type="button">Load More</button></div>
-                </div>
+              
             </div>
         </div>
     </div>
@@ -371,9 +363,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section__text-wrap">
-                        <h1 class="section__heading u-c-secondary u-s-m-b-12">URBAN SOUL</h1>
+                        <h1 class="section__heading u-c-secondary u-s-m-b-12">TÁC GIẢ NỔI BẬT</h1>
 
-                        <span class="section__span u-c-silver">RECENTLY URBAN PRODUCTS</span>
+                        <span class="section__span u-c-silver"><?=mb_strtoupper($author_random[0]->name)?></span>
                     </div>
                 </div>
             </div>
@@ -386,94 +378,31 @@
     <div class="section__content">
         <div class="container">
             <div class="row">
+                
+                <?php foreach ($product_author as $item): ;?>
                 <div class="col-lg-3 col-md-4 col-sm-6 u-s-m-b-30">
                     <div class="product-short u-h-100">
                         <div class="product-short__container">
                             <div class="product-short__img-wrap">
 
-                                <a class="aspect aspect--bg-grey-fb aspect--square u-d-block" href="product-detail.html">
+                                <a class="aspect aspect--bg-grey-fb aspect--square u-d-block" href="/product/product-detail?id=<?=$item->id?>">
 
-                                    <img class="aspect__img product-short__img" src="/static/images/product/women/product16.jpg" alt=""></a></div>
+                                    <img class="aspect__img product-short__img" src="<?= $item->get_media_path() == null ? '/uploads/macdinh.png' : $item->get_media_path() ?>" alt=""></a></div>
                             <div class="product-short__info">
 
-                                <span class="product-short__price">$126.77</span>
+                                <span class="product-short__price"><?=$item->sale_price?>đ</span>
 
                                 <span class="product-short__name">
 
-                                                <a href="product-detail.html">New Dress A Nice Elegant</a></span>
+                                                <a href="/product/product-detail?id=<?=$item->id?>"><?=$item->name?></a></span>
 
                                 <span class="product-short__category">
 
-                                                <a href="shop-side-version-2.html">Women Clothing</a></span></div>
+                                                <a href="shop-side-version-2.html"><?=$item->get_category_name()?></a></span></div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 u-s-m-b-30">
-                    <div class="product-short u-h-100">
-                        <div class="product-short__container">
-                            <div class="product-short__img-wrap">
-
-                                <a class="aspect aspect--bg-grey-fb aspect--square u-d-block" href="product-detail.html">
-
-                                    <img class="aspect__img product-short__img" src="/static/images/product/women/product17.jpg" alt=""></a></div>
-                            <div class="product-short__info">
-
-                                <span class="product-short__price">$126.77</span>
-
-                                <span class="product-short__name">
-
-                                                <a href="product-detail.html">New Dress B Nice Elegant</a></span>
-
-                                <span class="product-short__category">
-
-                                                <a href="shop-side-version-2.html">Women Clothing</a></span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 u-s-m-b-30">
-                    <div class="product-short u-h-100">
-                        <div class="product-short__container">
-                            <div class="product-short__img-wrap">
-
-                                <a class="aspect aspect--bg-grey-fb aspect--square u-d-block" href="product-detail.html">
-
-                                    <img class="aspect__img product-short__img" src="/static/images/product/women/product18.jpg" alt=""></a></div>
-                            <div class="product-short__info">
-
-                                <span class="product-short__price">$126.77</span>
-
-                                <span class="product-short__name">
-
-                                                <a href="product-detail.html">New Dress C Nice Elegant</a></span>
-
-                                <span class="product-short__category">
-
-                                                <a href="shop-side-version-2.html">Women Clothing</a></span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 u-s-m-b-30">
-                    <div class="product-short u-h-100">
-                        <div class="product-short__container">
-                            <div class="product-short__img-wrap">
-
-                                <a class="aspect aspect--bg-grey-fb aspect--square u-d-block" href="product-detail.html">
-
-                                    <img class="aspect__img product-short__img" src="/static/images/product/women/product19.jpg" alt=""></a></div>
-                            <div class="product-short__info">
-
-                                <span class="product-short__price">$126.77</span>
-
-                                <span class="product-short__name">
-
-                                                <a href="product-detail.html">New Dress D Nice Elegant</a></span>
-
-                                <span class="product-short__category">
-
-                                                <a href="shop-side-version-2.html">Women Clothing</a></span></div>
-                        </div>
-                    </div>
-                </div>
+             <?php endforeach;?>
             </div>
         </div>
     </div>
@@ -714,52 +643,7 @@
 
 
 <!--====== Section 7 ======-->
-<div class="u-s-p-b-60">
 
-    <!--====== Section Content ======-->
-    <div class="section__content">
-        <div class="container">
-
-            <!--====== Brand Slider ======-->
-            <div class="slider-fouc">
-                <div class="owl-carousel" id="brand-slider" data-item="5">
-                    <div class="brand-slide">
-
-                        <a href="shop-side-version-2.html">
-
-                            <img src="/static/images/brand/b1.png" alt=""></a></div>
-                    <div class="brand-slide">
-
-                        <a href="shop-side-version-2.html">
-
-                            <img src="/static/images/brand/b2.png" alt=""></a></div>
-                    <div class="brand-slide">
-
-                        <a href="shop-side-version-2.html">
-
-                            <img src="/static/images/brand/b3.png" alt=""></a></div>
-                    <div class="brand-slide">
-
-                        <a href="shop-side-version-2.html">
-
-                            <img src="/static/images/brand/b4.png" alt=""></a></div>
-                    <div class="brand-slide">
-
-                        <a href="shop-side-version-2.html">
-
-                            <img src="/static/images/brand/b5.png" alt=""></a></div>
-                    <div class="brand-slide">
-
-                        <a href="shop-side-version-2.html">
-
-                            <img src="/static/images/brand/b6.png" alt=""></a></div>
-                </div>
-            </div>
-            <!--====== End - Brand Slider ======-->
-        </div>
-    </div>
-    <!--====== End - Section Content ======-->
-</div>
 <!--====== End - Section 7 ======-->
 
 {% endblock %}

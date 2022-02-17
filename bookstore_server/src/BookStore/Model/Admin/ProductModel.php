@@ -92,10 +92,22 @@ class ProductModel
         return $this->product_table->raw($sql, DatabaseTable::FETCH_RAW_MULTIPLE);
     }
     
+    
+    
     public function random_product_by_category($id, $number)
     {
         $sql = "SELECT * FROM categories INNER JOIN products ON categories.id = products.category_id
                 WHERE categories.id = $id
+                ORDER BY RAND()
+                LIMIT $number";
+
+        return $this->product_table->raw($sql, DatabaseTable::FETCH_RAW_MULTIPLE);
+    }
+
+    public function random_product_by_author($id, $number)
+    {
+        $sql = "SELECT * FROM authors INNER JOIN products ON authors.id = products.author_id
+                WHERE authors.id = $id
                 ORDER BY RAND()
                 LIMIT $number";
 

@@ -60,4 +60,13 @@ class AuthorModel
     {
         $this->author_table->delete($id);
     }
+
+    public function random_author($number)
+    {
+        $sql = "SELECT * FROM authors
+                ORDER BY RAND()
+                LIMIT $number";
+
+        return $this->author_table->raw($sql, DatabaseTable::FETCH_RAW_MULTIPLE);
+    }
 }

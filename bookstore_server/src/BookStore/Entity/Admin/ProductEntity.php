@@ -88,5 +88,10 @@ class ProductEntity
 
         return $this->author_model->get_by_id_author($this->author_id)->{AuthorEntity::KEY_NAME};
     }
+
+    function get_truncate_description()
+    {
+        return NJStringUtils::truncate($this->description, 500);
+    }
     
 }

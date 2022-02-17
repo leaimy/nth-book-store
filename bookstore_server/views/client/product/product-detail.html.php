@@ -17,7 +17,7 @@
                             <li class="has-separator">
 
                                 <a href="/">Home</a></li>
-                            <li class="has-separator">
+                            <li class="">
 
                                 <a href="shop-side-version-2.html"><?= $product->get_category_name() ?></a></li>
                            
@@ -55,21 +55,15 @@
                     <!--====== Product Right Side Details ======-->
                     <div class="pd-detail">
                         <div>
-
+                            <span style="font-size: 14px; font-weight: bold">Tác giả: <a href="" style="color: blue"><?= $product->get_author_name() ?></a> </span>
                             <span class="pd-detail__name"><?= $product->name ?></span></div>
                         <div>
                             <div class="pd-detail__inline">
 
-                                <span class="pd-detail__price"><?= $product->sale_price ?></span>
+                                <span class="pd-detail__price"><?= $product->sale_price ?>đ</span>
 
                         </div>
-                        <div class="u-s-m-b-15">
-                            <div class="pd-detail__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-
-                                <span class="pd-detail__review u-s-m-l-4">
-
-                                            <a data-click-scroll="#view-review">23 Reviews</a></span></div>
-                        </div>
+                       
                         <div class="u-s-m-b-15">
                             <div class="pd-detail__inline">
 
@@ -118,23 +112,23 @@
                                     </div>
                                     <div class="u-s-m-b-15">
 
-                                        <button class="btn btn--e-brand-b-2" type="submit">Add to Cart</button></div>
+                                        <a href="" class="btn btn--e-brand-b-2" type="submit">Thêm vào giỏ hàng</a></div>
                                 </div>
                             </form>
                         </div>
                         <div class="u-s-m-b-15">
 
-                            <span class="pd-detail__label u-s-m-b-8">Product Policy:</span>
+                            <span class="pd-detail__label u-s-m-b-8">Chính sách mua hàng:</span>
                             <ul class="pd-detail__policy-list">
                                 <li><i class="fas fa-check-circle u-s-m-r-8"></i>
 
-                                    <span>Buyer Protection.</span></li>
+                                    <span>Bảo vệ người mua.</span></li>
                                 <li><i class="fas fa-check-circle u-s-m-r-8"></i>
 
-                                    <span>Full Refund if you don't receive your order.</span></li>
+                                    <span>Hoàn trả đầy đủ nếu bạn không nhận được đơn đặt hàng của mình.</span></li>
                                 <li><i class="fas fa-check-circle u-s-m-r-8"></i>
 
-                                    <span>Returns accepted if product not as described.</span></li>
+                                    <span>Trả hàng được chấp nhận nếu sản phẩm không như mô tả.</span></li>
                             </ul>
                         </div>
                     </div>
@@ -155,9 +149,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section__text-wrap">
-                            <h1 class="section__heading u-c-secondary u-s-m-b-12">CUSTOMER ALSO VIEWED</h1>
+                            <h1 class="section__heading u-c-secondary u-s-m-b-12">SÁCH LIÊN QUAN</h1>
 
-                            <span class="section__span u-c-grey">PRODUCTS THAT CUSTOMER VIEWED</span>
+                            <span class="section__span u-c-grey">CHỌN THÊM SÁCH GỢI Ý</span>
                         </div>
                     </div>
                 </div>

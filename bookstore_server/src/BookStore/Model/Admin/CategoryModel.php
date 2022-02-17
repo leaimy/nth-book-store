@@ -47,4 +47,12 @@ class CategoryModel
     public function delete_category($id){
         $this->category_table->delete($id);
     }
+    
+    public function random_category($number){
+        $sql = "SELECT * FROM categories
+                ORDER BY RAND()
+                LIMIT $number";
+
+        return $this->category_table->raw($sql, DatabaseTable::FETCH_RAW_MULTIPLE);
+    }
 }

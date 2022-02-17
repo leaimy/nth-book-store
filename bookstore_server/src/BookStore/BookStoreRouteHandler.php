@@ -7,6 +7,7 @@ use BookStore\Controller\Admin\CategoryController;
 use BookStore\Controller\Admin\DashboardController;
 use BookStore\Controller\Admin\ProductController;
 use BookStore\Controller\Client\HomeController;
+use BookStore\Controller\Client\ProductClientController;
 use BookStore\Controller\Client\ProfileController;
 use BookStore\Entity\Admin\AuthorEntity;
 use BookStore\Entity\Admin\CategoryEntity;
@@ -58,8 +59,9 @@ class BookStoreRouteHandler implements IRoutes
         /*
          * Client
          */
-        $home_controller = new HomeController($this->admin_product_model);
+        $home_controller = new HomeController($this->admin_product_model, $this->admin_category_model);
         $profile_controller = new  ProfileController();
+        $product_client_controller= new  ProductClientController($this->admin_product_model,$this->admin_category_model);
 
         /*
          * Admin
@@ -83,6 +85,12 @@ class BookStoreRouteHandler implements IRoutes
                 'GET' => [
                     'controller' => $profile_controller,
                     'action' => 'render_profile_dashboard_page'
+                ]
+            ],
+            '/product/product-detail' => [
+                'GET' => [
+                    'controller' => $product_client_controller,
+                    'action' => 'render_product_detail_page'
                 ]
             ],
             

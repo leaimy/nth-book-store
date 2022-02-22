@@ -3,7 +3,6 @@
 {% block title %} NTH Book Store {% endblock %}
 
 {% block content %}
-<div class="app-content">
 
     <!--====== Section 1 ======-->
     <div class="u-s-p-t-90">
@@ -17,9 +16,13 @@
                             <li class="has-separator">
 
                                 <a href="/">Home</a></li>
-                            <li class="">
+                            <li class="has-separator ">
 
-                                <a href="shop-side-version-2.html"><?= $product->get_category_name() ?></a></li>
+                                <a  href="shop-side-version-2.html"><?= $product->get_category_name() ?></a></li>
+
+                            <li>
+
+                               <a> <?= $product->name ?></a></li>
                            
                         </ul>
                     </div>
@@ -55,7 +58,7 @@
                     <!--====== Product Right Side Details ======-->
                     <div class="pd-detail">
                         <div>
-                            <span style="font-size: 14px; font-weight: bold">Tác giả: <a href="" style="color: blue"><?= $product->get_author_name() ?></a> </span>
+                            <span class="pd-detail__preview-desc">Tác giả: <a href="" style="color: blue"><?= $product->get_author_name() ?></a> </span>
                             <span class="pd-detail__name"><?= $product->name ?></span></div>
                         <div>
                             <div class="pd-detail__inline">

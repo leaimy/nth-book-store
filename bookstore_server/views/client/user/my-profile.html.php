@@ -46,25 +46,15 @@
                                         <ul class="dash__f-list">
                                             <li>
 
-                                                <a href="dashboard.html">Manage My Account</a></li>
+                                                <a href="dashboard.html">Quản lý tài khoản của tôi</a></li>
                                             <li>
 
-                                                <a class="dash-active" href="dash-my-profile.html">My Profile</a></li>
+                                                <a class="dash-active" href="/my-profile">Thông tin của tôi</a></li>
+                                            
                                             <li>
 
-                                                <a href="dash-address-book.html">Address Book</a></li>
-                                            <li>
-
-                                                <a href="dash-track-order.html">Track Order</a></li>
-                                            <li>
-
-                                                <a href="dash-my-order.html">My Orders</a></li>
-                                            <li>
-
-                                                <a href="dash-payment-option.html">My Payment Options</a></li>
-                                            <li>
-
-                                                <a href="dash-cancellation.html">My Returns & Cancellations</a></li>
+                                                <a href="dash-my-order.html">Đơn đặt hàng của tôi</a></li>
+                                           
                                         </ul>
                                     </div>
                                 </div>
@@ -78,7 +68,7 @@
 
                                                     <span class="dash__w-text">4</span>
 
-                                                    <span class="dash__w-name">Orders Placed</span></div>
+                                                    <span class="dash__w-name">Đặt hàng</span></div>
                                             </li>
                                             <li>
                                                 <div class="dash__w-wrap">
@@ -87,7 +77,7 @@
 
                                                     <span class="dash__w-text">0</span>
 
-                                                    <span class="dash__w-name">Cancel Orders</span></div>
+                                                    <span class="dash__w-name">Hủy đơn hàng</span></div>
                                             </li>
                                             <li>
                                                 <div class="dash__w-wrap">
@@ -96,7 +86,7 @@
 
                                                     <span class="dash__w-text">0</span>
 
-                                                    <span class="dash__w-name">Wishlist</span></div>
+                                                    <span class="dash__w-name">Danh sách yêu thích</span></div>
                                             </li>
                                         </ul>
                                     </div>
@@ -106,12 +96,12 @@
                             <div class="col-lg-9 col-md-12">
                                 <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
                                     <div class="dash__pad-2">
-                                        <h1 class="dash__h1 u-s-m-b-14">My Profile</h1>
+                                        <h1 class="dash__h1 u-s-m-b-14">Thông tin của tôi</h1>
 
-                                        <span class="dash__text u-s-m-b-30">Look all your info, you could customize your profile.</span>
+                                        <span class="dash__text u-s-m-b-30">Xem tất cả thông tin của bạn, bạn có thể tùy chỉnh thông tin của mình.</span>
                                         <div class="row">
                                             <div class="col-lg-4 u-s-m-b-30">
-                                                <h2 class="dash__h2 u-s-m-b-8">Full Name</h2>
+                                                <h2 class="dash__h2 u-s-m-b-8">Họ và tên</h2>
 
                                                 <span class="dash__text">John Doe</span>
                                             </div>

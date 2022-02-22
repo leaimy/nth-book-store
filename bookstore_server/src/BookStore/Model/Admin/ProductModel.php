@@ -113,4 +113,20 @@ class ProductModel
 
         return $this->product_table->raw($sql, DatabaseTable::FETCH_RAW_MULTIPLE);
     }
+    public function product_by_category($id)
+    {
+        $sql = "SELECT * FROM categories INNER JOIN products ON categories.id = products.category_id
+                WHERE categories.id = $id";
+                
+
+        return $this->product_table->raw($sql, DatabaseTable::FETCH_RAW_MULTIPLE);
+    }
+
+    public function product_by_author($id)
+    {
+        $sql = "SELECT * FROM authors INNER JOIN products ON authors.id = products.author_id
+                WHERE authors.id = $id";
+
+        return $this->product_table->raw($sql, DatabaseTable::FETCH_RAW_MULTIPLE);
+    }
 }

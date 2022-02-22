@@ -93,7 +93,7 @@
                             <img class="aspect__img" src="/static/anh/c1.jpg" alt=""></div>
                         <div class="promotion-o__content">
 
-                            <a class="promotion-o__link btn--e-white-brand" href="shop-side-version-2.html">Kỹ năng sống</a></div>
+                            <a class="promotion-o__link btn--e-white-brand" href="/product/category?id=6">Kỹ năng sống</a></div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 u-s-m-b-30">
@@ -103,7 +103,7 @@
                             <img class="aspect__img" src="/static/anh/c2.jpg" alt=""></div>
                         <div class="promotion-o__content">
 
-                            <a class="promotion-o__link btn--e-white-brand" href="shop-side-version-2.html">Kiến thức tổng hợp</a></div>
+                            <a class="promotion-o__link btn--e-white-brand" href="/product/category?id=8">Kiến thức tổng hợp</a></div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 u-s-m-b-30">
@@ -113,7 +113,7 @@
                             <img class="aspect__img" src="/static/anh/c3.jpg" alt=""></div>
                         <div class="promotion-o__content">
 
-                            <a class="promotion-o__link btn--e-white-brand" href="shop-side-version-2.html">Thiếu nhi</a></div>
+                            <a class="promotion-o__link btn--e-white-brand" href="/product/category?id=9">Văn học</a></div>
                     </div>
                 </div>
             </div>
@@ -134,11 +134,13 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-12">
 
-                        <a class="i3-banner" href="shop-side-version-2.html">
                             <div class="aspect aspect--bg-grey-fb aspect--square">
 
                                 <img class="aspect__img i3-banner__img" src="/static/anh/900.jpg" alt=""></div>
-                        </a></div>
+                            <div class="promotion-o__content">
+
+                                <a class="promotion-o__link btn--e-white-brand" href="/product/category?id=4">Chính trị - Pháp luật</a></div>
+                        </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="row">
                             <?php foreach ($product2 as $item):?>
@@ -160,18 +162,22 @@
 
                                             <span class="product-short__category">
 
-                                                            <a href="shop-side-version-2.html"><?= $item->get_category_name()?></a></span></div>
+                                                            <a href="/product/category?id=<?=$item->category_id?>"><?= $item->get_category_name()?></a></span></div>
                                     </div>
                                 </div>
                             </div>
                             <?php endforeach;?>
                             <div class="col-lg-12">
 
-                                <a class="i3-banner" href="shop-side-version-2.html">
+                                
                                     <div class="aspect aspect--bg-grey-fb aspect--1048-334">
 
                                         <img class="aspect__img i3-banner__img" src="/static/anh/1048.jpg" alt=""></div>
-                                </a></div>
+                                    <div class="promotion-o__content">
+
+                                        <a class="promotion-o__link btn--e-white-brand" href="/product/category?id=1">Thiếu nhi</a></div>               
+
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -236,7 +242,7 @@
 
                                         <span class="product-r__category">
 
-                                            <a href="shop-side-version-2.html"><?=$item->get_category_name()?></a></span>
+                                            <a href="/product/category?id=<?=$item->category_id?>"><?=$item->get_category_name()?></a></span>
                             <div class="product-r__n-p-wrap">
 
                                             <span class="product-r__name">
@@ -329,7 +335,7 @@
 
                                         <span class="product-bs__category">
 
-                                                        <a href="shop-side-version-2.html"><?= $item->get_category_name() ?></a></span>
+                                                        <a href="/product/category?id=<?=$item->category_id?>"><?= $item->get_category_name() ?></a></span>
 
                                         <span class="product-bs__name">
 
@@ -398,7 +404,7 @@
 
                                 <span class="product-short__category">
 
-                                                <a href="shop-side-version-2.html"><?=$item->get_category_name()?></a></span></div>
+                                                <a href="/product/category?id=<?=$item->category_id?>"><?=$item->get_category_name()?></a></span></div>
                         </div>
                     </div>
                 </div>

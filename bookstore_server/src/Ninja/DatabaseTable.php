@@ -178,7 +178,15 @@ class DatabaseTable
             $primaryKeyColumn = $this->primaryKey;
             $entity->$primaryKeyColumn = $insertId;
         } catch (\PDOException $e) {
+            
+            if ($e->getCode() == "23000") {
+                // Lỗi ràng buộc CSDL
+                die($e->getMessage());
+            }
+            
             $this->update($record);
+        }catch (\PDOException $e) {
+            
         }
 
         foreach ($record as $key => $value) {

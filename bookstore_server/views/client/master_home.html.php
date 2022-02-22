@@ -77,7 +77,7 @@
 
                                 <!--====== List ======-->
                                 <ul class="ah-list ah-list--design1 ah-list--link-color-white">
-                                    <li class="has-dropdown" data-tooltip="tooltip" data-placement="left" title="Tài khoản">
+                                    <li class="has-dropdown" data-tooltip="tooltip" data-placement="left" title="<?= ($user ?? null) == null ? 'Tài khoản' : $user->lastname . $user->firstname?>">
 
                                         <a><i class="far fa-user-circle"></i></a>
 
@@ -936,11 +936,13 @@
 
                                 <!--====== List ======-->
                                 <ul class="ah-list ah-list--design2 ah-list--link-color-white">
+                                    
+                                    <?php if($is_admin): ?>
                                     <li>
-
-                                        <a href="/">TRANG CHỦ</a></li>
+                                        <a href="/admin">ADMIN</a></li>
+                                    <?php endif; ?>
+                                    
                                     <li>
-
                                         <a href="/product/product-all">SÁCH</a></li>
                                     <li class="has-dropdown">
 

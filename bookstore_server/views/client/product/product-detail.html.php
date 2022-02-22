@@ -18,7 +18,7 @@
                                 <a href="/">Home</a></li>
                             <li class="has-separator ">
 
-                                <a  href="shop-side-version-2.html"><?= $product->get_category_name() ?></a></li>
+                                <a  href="/product/category?id=<?=$product->category_id?>"><?= $product->get_category_name() ?></a></li>
 
                             <li>
 
@@ -58,7 +58,7 @@
                     <!--====== Product Right Side Details ======-->
                     <div class="pd-detail">
                         <div>
-                            <span class="pd-detail__preview-desc">Tác giả: <a href="" style="color: blue"><?= $product->get_author_name() ?></a> </span>
+                            <span class="pd-detail__preview-desc">Tác giả: <a href="/product/author?id=<?=$product->author_id?>" style="color: blue"><?= $product->get_author_name() ?></a> </span>
                             <span class="pd-detail__name"><?= $product->name ?></span></div>
                         <div>
                             <div class="pd-detail__inline">

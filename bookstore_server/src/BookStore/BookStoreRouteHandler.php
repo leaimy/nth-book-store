@@ -6,6 +6,7 @@ use BookStore\Controller\Admin\AuthorController;
 use BookStore\Controller\Admin\CategoryController;
 use BookStore\Controller\Admin\DashboardController;
 use BookStore\Controller\Admin\ProductController;
+use BookStore\Controller\Admin\UserController;
 use BookStore\Controller\Client\HomeController;
 use BookStore\Controller\Client\ProductClientController;
 use BookStore\Controller\Client\ProfileController;
@@ -13,10 +14,12 @@ use BookStore\Entity\Admin\AuthorEntity;
 use BookStore\Entity\Admin\CategoryEntity;
 use BookStore\Entity\Admin\MediaEntity;
 use BookStore\Entity\Admin\ProductEntity;
+use BookStore\Entity\Admin\UserEntity;
 use BookStore\Model\Admin\AuthorModel;
 use BookStore\Model\Admin\CategoryModel;
 use BookStore\Model\Admin\MediaModel;
 use BookStore\Model\Admin\ProductModel;
+use BookStore\Model\Admin\UserModel;
 use Ninja\DatabaseTable;
 use Ninja\NJInterface\IRoutes;
 
@@ -27,31 +30,36 @@ class BookStoreRouteHandler implements IRoutes
     private $admin_author_table;
     private $admin_media_table;
     private $admin_product_table;
-    
+    private $admin_user_table;
+
 
     // Tạo các trường Models
     private $admin_category_model;
     private $admin_author_model;
     private $admin_media_model;
     private $admin_product_model;
+    private $admin_user_model;
 
     public function __construct()
     {
         $this->admin_category_table = new DatabaseTable(CategoryEntity::TABLE, CategoryEntity::PRIMARY_KEY, CategoryEntity::CLASS_NAME);
         $this->admin_category_model = new CategoryModel($this->admin_category_table);
-        
+
         $this->admin_media_table = new DatabaseTable(MediaEntity::TABLE, MediaEntity::PRIMARY_KEY, MediaEntity::CLASS_NAME);
         $this->admin_media_model = new MediaModel($this->admin_media_table);
-        
+
         $this->admin_author_table = new DatabaseTable(AuthorEntity::TABLE, AuthorEntity::PRIMARY_KEY, AuthorEntity::CLASS_NAME, [
-            &$this->admin_media_model,&$this->admin_author_model
+            &$this->admin_media_model, &$this->admin_author_model
         ]);
         $this->admin_author_model = new AuthorModel($this->admin_author_table);
-        
+
         $this->admin_product_table = new DatabaseTable(ProductEntity::TABLE, ProductEntity::PRIMARY_KEY, ProductEntity::CLASS_NAME, [
             &$this->admin_media_model, &$this->admin_product_model, &$this->admin_category_model, &$this->admin_author_model
         ]);
         $this->admin_product_model = new ProductModel($this->admin_product_table);
+
+        $this->admin_user_table = new DatabaseTable(UserEntity::TABLE, UserEntity::PRIMARY_KEY, UserEntity::CLASS_NAME);
+        $this->admin_user_model = new UserModel($this->admin_user_table);
     }
 
     public function getRoutes(): array
@@ -59,9 +67,9 @@ class BookStoreRouteHandler implements IRoutes
         /*
          * Client
          */
-        $home_controller = new HomeController($this->admin_product_model, $this->admin_category_model,$this->admin_author_model);
-        $profile_controller = new  ProfileController($this->admin_product_model,$this->admin_category_model, $this->admin_author_model);
-        $product_client_controller= new  ProductClientController($this->admin_product_model,$this->admin_category_model, $this->admin_author_model);
+        $home_controller = new HomeController($this->admin_product_model, $this->admin_category_model, $this->admin_author_model);
+        $profile_controller = new  ProfileController($this->admin_product_model, $this->admin_category_model, $this->admin_author_model);
+        $product_client_controller = new  ProductClientController($this->admin_product_model, $this->admin_category_model, $this->admin_author_model);
 
         /*
          * Admin
@@ -70,6 +78,7 @@ class BookStoreRouteHandler implements IRoutes
         $category_controller = new CategoryController($this->admin_category_model);
         $author_controller = new AuthorController($this->admin_author_model, $this->admin_media_model);
         $product_controller = new ProductController($this->admin_media_model, $this->admin_product_model, $this->admin_category_model, $this->admin_author_model);
+        $user_controller = new UserController($this->admin_user_model, $this->admin_category_model, $this->admin_author_model, $this->admin_product_model);
 
         return [
             /*
@@ -86,8 +95,8 @@ class BookStoreRouteHandler implements IRoutes
                     'controller' => $profile_controller,
                     'action' => 'render_profile_dashboard_page'
                 ],
-              
-               
+
+
             ],
             '/signin' => [
                 'GET' => [
@@ -113,7 +122,20 @@ class BookStoreRouteHandler implements IRoutes
                     'action' => 'render_product_all_page'
                 ]
             ],
-            
+            '/product/category' => [
+                'GET' => [
+                    'controller' => $product_client_controller,
+                    'action' => 'render_product_by_category_page'
+                ]
+            ],
+            '/product/author' => [
+                'GET' => [
+                    'controller' => $product_client_controller,
+                    'action' => 'render_product_by_author_page'
+                ]
+            ],
+
+
             /*
              * Admin
              */
@@ -126,7 +148,7 @@ class BookStoreRouteHandler implements IRoutes
                     'action' => 'index'
                 ]
             ],
-            
+
             // Category => thể loại
             '/admin/category' => [
                 'GET' => [
@@ -166,7 +188,7 @@ class BookStoreRouteHandler implements IRoutes
                     'action' => 'store_api'
                 ],
             ],
-            
+
 
             // Author => tác giả
             '/admin/author' => [
@@ -194,12 +216,14 @@ class BookStoreRouteHandler implements IRoutes
                     'controller' => $author_controller,
                     'action' => 'update'
                 ],
+                'login' => true
             ],
             '/admin/author/delete' => [
                 'GET' => [
                     'controller' => $author_controller,
                     'action' => 'delete'
                 ],
+                'login' => true
             ],
             '/api/v1/admin/author/store' => [
                 'POST' => [
@@ -213,14 +237,15 @@ class BookStoreRouteHandler implements IRoutes
                     'action' => 'get_all'
                 ],
             ],
-            
+
 
             // Product => sản phẩm sách
             '/admin/product' => [
                 'GET' => [
                     'controller' => $product_controller,
                     'action' => 'index'
-                ]
+                ],
+                'login' => true
             ],
             '/admin/product/create' => [
                 'GET' => [
@@ -231,6 +256,7 @@ class BookStoreRouteHandler implements IRoutes
                     'controller' => $product_controller,
                     'action' => 'store'
                 ],
+                'login' => true
             ],
             '/admin/product/edit' => [
                 'GET' => [
@@ -241,12 +267,30 @@ class BookStoreRouteHandler implements IRoutes
                     'controller' => $product_controller,
                     'action' => 'update'
                 ],
+                'login' => true
             ],
             '/admin/product/delete' => [
                 'GET' => [
                     'controller' => $product_controller,
                     'action' => 'delete'
                 ],
+                'login' => true
+            ],
+
+            //User => Người dùng
+            '/admin/user/store' => [
+                'POST' => [
+                    'controller' => $user_controller,
+                    'action' => 'store'
+                ],
+                'login' => true
+            ],
+            '/admin/user/signin' => [
+                'POST' => [
+                    'controller' => $user_controller,
+                    'action' => 'signin'
+                ],
+                'login' => true
             ],
         ];
     }

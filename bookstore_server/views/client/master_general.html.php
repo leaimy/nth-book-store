@@ -931,9 +931,7 @@
 
                             <!--====== List ======-->
                             <ul class="ah-list ah-list--design2 ah-list--link-color-secondary">
-                                <li>
-
-                                    <a href="/">TRANG CHỦ</a></li>
+                              
                                 <li>
 
                                     <a href="/product/product-all">SÁCH</a></li>
@@ -1000,7 +998,7 @@
                             <ul class="ah-list ah-list--design1 ah-list--link-color-secondary">
                                 <li>
 
-                                    <a href="index.html"><i class="fas fa-home u-c-brand"></i></a></li>
+                                    <a href="/"><i class="fas fa-home u-c-brand"></i></a></li>
                                 <li>
 
                                     <a href="wishlist.html"><i class="far fa-heart"></i></a></li>

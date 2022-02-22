@@ -2,6 +2,7 @@
 
 namespace BookStore\Controller\Client;
 
+use BookStore\Entity\Admin\UserEntity;
 use BookStore\Model\Admin\AuthorModel;
 use BookStore\Model\Admin\CategoryModel;
 use BookStore\Model\Admin\ProductModel;
@@ -15,6 +16,9 @@ class HomeController extends NJBaseController
     private $author_model;
     public function __construct(ProductModel $product_model, CategoryModel $category_model, AuthorModel $author_model)
     {
+        if (session_status() == PHP_SESSION_NONE)
+            session_start();
+        
         $this->product_model = $product_model;
         $this->category_model = $category_model;
         $this->author_model = $author_model;
@@ -22,6 +26,8 @@ class HomeController extends NJBaseController
 
     public function render_home_page()
     {
+        $user = $_SESSION['user'] ?? null;
+        
         $product_all = $this->product_model->get_all_product();
         $product2 = $this->product_model->random_product(2);
         $product8 = $this->product_model->random_product(8);
@@ -41,7 +47,9 @@ class HomeController extends NJBaseController
             'author_random' => $author_random4,
             'category_random10' => $category_random10,
             'author_random10' => $author_random10,
-            'product_author'=> $product_author
+            'product_author'=> $product_author,
+            'user' => $user,
+            'is_admin' => $user instanceof UserEntity ? $user->type == 'ADMIN' : false
         ]);
     }
 

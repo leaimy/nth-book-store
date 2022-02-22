@@ -58,37 +58,64 @@
                             <span class="gl-text u-s-m-b-30">Bằng cách tạo tài khoản với cửa hàng của chúng tôi, bạn sẽ có thể thực hiện quy trình thanh toán nhanh hơn, lưu trữ địa chỉ giao hàng, xem và theo dõi đơn đặt hàng trong tài khoản của bạn và hơn thế nữa.</span>
                             <div class="u-s-m-b-15">
 
-                                <a class="l-f-o__create-link btn--e-transparent-brand-b-2" href="/signup">TẠO MỘT TÀI KHOẢN</a></div>
+                                <a class="l-f-o__create-link btn--e-transparent-brand-b-2" href="/signup">TẠO MỘT TÀI
+                                    KHOẢN</a></div>
                             <h1 class="gl-h1">ĐĂNG NHẬP</h1>
 
                             <span class="gl-text u-s-m-b-30">Nếu bạn có tài khoản vui lòng đăng nhập.</span>
-                            <form class="l-f-o__form">
+                            <form class="l-f-o__form" action="/admin/user/signin" method="post">
                                 <div class="gl-s-api">
                                     <div class="u-s-m-b-15">
 
-                                        <button class="gl-s-api__btn gl-s-api__btn--fb" type="button"><i class="fab fa-facebook-f"></i>
+                                        <button class="gl-s-api__btn gl-s-api__btn--fb" type="button"><i
+                                                class="fab fa-facebook-f"></i>
 
-                                            <span>Signin with Facebook</span></button></div>
+                                            <span>Signin with Facebook</span></button>
+                                    </div>
                                     <div class="u-s-m-b-15">
 
-                                        <button class="gl-s-api__btn gl-s-api__btn--gplus" type="button"><i class="fab fa-google"></i>
+                                        <button class="gl-s-api__btn gl-s-api__btn--gplus" type="button"><i
+                                                class="fab fa-google"></i>
 
-                                            <span>Signin with Google</span></button></div>
+                                            <span>Signin with Google</span></button>
+                                    </div>
                                 </div>
+                                
+                                <?php if ($is_error ?? false): ?>
+
+                                <div class="u-s-m-b-30 alert" style="
+                                    padding: 0.75rem 1.25rem;
+                                    margin-bottom: 2rem;
+                                    margin-top: 2rem;
+                                    border: 1px solid transparent;
+                                    border-radius: 0.25rem;
+                                    color: #721c24;
+                                    background-color: #f8d7da;
+                                    border-color: #f5c6cb;
+                                ">
+                                    <?= $error_message ?>
+                                </div>
+                                
+                                <?php endif; ?>
+
                                 <div class="u-s-m-b-30">
 
                                     <label class="gl-label" for="login-email">E-MAIL *</label>
 
-                                    <input class="input-text input-text--primary-style" type="text" id="login-email" placeholder="Enter E-mail"></div>
+                                    <input name="email" class="input-text input-text--primary-style" type="email"
+                                           id="login-email" placeholder="Enter E-mail"></div>
                                 <div class="u-s-m-b-30">
 
                                     <label class="gl-label" for="login-password">MẬT KHẨU *</label>
 
-                                    <input class="input-text input-text--primary-style" type="text" id="login-password" placeholder="Enter Password"></div>
+                                    <input name="password" class="input-text input-text--primary-style" type="password"
+                                           id="login-password" placeholder="Enter Password"></div>
                                 <div class="gl-inline">
                                     <div class="u-s-m-b-30">
 
-                                        <button class="btn btn--e-transparent-brand-b-2" type="submit">ĐĂNG NHẬP</button></div>
+                                        <button class="btn btn--e-transparent-brand-b-2" type="submit">ĐĂNG NHẬP
+                                        </button>
+                                    </div>
                                     <div class="u-s-m-b-30">
 
                                         <a class="gl-link" href="lost-password.html">Quên mật khẩu?</a></div>

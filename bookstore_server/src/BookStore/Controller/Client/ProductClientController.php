@@ -48,4 +48,32 @@ class ProductClientController extends NJBaseController
         ]);
     }
 
+    public function render_product_by_category_page()
+    {
+        $id = $_GET['id'];
+        $product_by_category = $this->product_model->product_by_category($id);
+        $category_random10 = $this->category_model->random_category(10);
+        $author_random10 = $this->author_model->random_author(10);
+
+        $this->view_handler->render('client/product/product-by-category.html.php', [
+            'product_by_category' => $product_by_category,
+            'category_random10' => $category_random10,
+            'author_random10' => $author_random10,
+        ]);
+    }
+
+    public function render_product_by_author_page()
+    {
+        $id = $_GET['id'];
+        $product_by_author = $this->product_model->product_by_author($id);
+        $category_random10 = $this->category_model->random_category(10);
+        $author_random10 = $this->author_model->random_author(10);
+
+        $this->view_handler->render('client/product/product-by-author.html.php', [
+            'product_by_author' => $product_by_author,
+            'category_random10' => $category_random10,
+            'author_random10' => $author_random10,
+        ]);
+    }
+
 }

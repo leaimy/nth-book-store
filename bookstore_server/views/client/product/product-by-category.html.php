@@ -39,7 +39,7 @@
                     </div>
                     <div class="shop-p__collection">
                         <div class="row is-grid-active">
-                            <?php foreach ($product_all as $product): ?>
+                            <?php foreach ($product_by_category as $product): ?>
                             <div class="col-lg-3 col-md-4 col-sm-6">
                                 <div class="product-m">
                                     <div class="product-m__thumb">

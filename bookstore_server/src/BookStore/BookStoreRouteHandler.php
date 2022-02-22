@@ -107,6 +107,12 @@ class BookStoreRouteHandler implements IRoutes
                     'action' => 'render_product_detail_page'
                 ]
             ],
+            '/product/product-all' => [
+                'GET' => [
+                    'controller' => $product_client_controller,
+                    'action' => 'render_product_all_page'
+                ]
+            ],
             
             /*
              * Admin

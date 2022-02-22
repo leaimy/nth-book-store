@@ -34,5 +34,18 @@ class ProductClientController extends NJBaseController
             'author_random10' => $author_random10,
         ]);
     }
+    
+    public function render_product_all_page()
+    {
+        $product_all = $this->product_model->get_all_product();
+        $category_random10 = $this->category_model->random_category(10);
+        $author_random10 = $this->author_model->random_author(10);
+
+        $this->view_handler->render('client/product/product-all.html.php', [
+            'product_all' => $product_all,
+            'category_random10' => $category_random10,
+            'author_random10' => $author_random10,
+        ]);
+    }
 
 }

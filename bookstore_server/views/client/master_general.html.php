@@ -933,7 +933,10 @@
                             <ul class="ah-list ah-list--design2 ah-list--link-color-secondary">
                                 <li>
 
-                                    <a href="shop-side-version-2.html">SÁCH</a></li>
+                                    <a href="/">TRANG CHỦ</a></li>
+                                <li>
+
+                                    <a href="/product/product-all">SÁCH</a></li>
                                 <li class="has-dropdown">
 
                                     <a>THỂ LOẠI<i class="fas fa-angle-down u-s-m-l-6"></i></a>

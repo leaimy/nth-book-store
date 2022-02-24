@@ -23,7 +23,7 @@ class UserModel
             UserEntity::KEY_LASTNAME => $args[UserEntity::KEY_LASTNAME],
             UserEntity::KEY_USERNAME => $args[UserEntity::KEY_USERNAME],
             UserEntity::KEY_EMAIL => $args[UserEntity::KEY_EMAIL],
-            UserEntity::KEY_PASSWORD => $args[UserEntity::KEY_PASSWORD],
+            UserEntity::KEY_PASSWORD => password_hash($args[UserEntity::KEY_PASSWORD], PASSWORD_DEFAULT ),
             UserEntity::KEY_PHONENUMBER => $args[UserEntity::KEY_PHONENUMBER],
             UserEntity::KEY_STREET => $args[UserEntity::KEY_STREET] ?? null,
             UserEntity::KEY_VILLAGE => $args[UserEntity::KEY_VILLAGE] ?? null,

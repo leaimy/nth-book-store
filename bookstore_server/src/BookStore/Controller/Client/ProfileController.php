@@ -42,11 +42,20 @@ class ProfileController extends NJBaseController
     
     public function render_signin_page()
     {
+        $is_error = $_GET['error'] ?? null;
+        $error_message = '';
+        
+        if ($is_error == 1) {
+            $error_message = 'Thông tin đăng nhập không hợp lệ';
+        }
+        
         $category_random10 = $this->category_model->random_category(10);
         $author_random10 = $this->author_model->random_author(10);
         $this->view_handler->render('client/user/signin.html.php',[
             'category_random10' => $category_random10,
             'author_random10' => $author_random10,
+            'is_error' => $is_error,
+            'error_message' => $error_message
         ]);
     }
     

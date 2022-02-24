@@ -20,6 +20,7 @@ use BookStore\Model\Admin\CategoryModel;
 use BookStore\Model\Admin\MediaModel;
 use BookStore\Model\Admin\ProductModel;
 use BookStore\Model\Admin\UserModel;
+use Ninja\Authentication;
 use Ninja\DatabaseTable;
 use Ninja\NJInterface\IRoutes;
 
@@ -39,6 +40,9 @@ class BookStoreRouteHandler implements IRoutes
     private $admin_media_model;
     private $admin_product_model;
     private $admin_user_model;
+
+
+    private $authentication_helper;
 
     public function __construct()
     {
@@ -60,6 +64,8 @@ class BookStoreRouteHandler implements IRoutes
 
         $this->admin_user_table = new DatabaseTable(UserEntity::TABLE, UserEntity::PRIMARY_KEY, UserEntity::CLASS_NAME);
         $this->admin_user_model = new UserModel($this->admin_user_table);
+
+        $this->authentication_helper = new Authentication($this->admin_user_table, UserEntity::KEY_EMAIL, UserEntity::KEY_PASSWORD);
     }
 
     public function getRoutes(): array
@@ -78,7 +84,7 @@ class BookStoreRouteHandler implements IRoutes
         $category_controller = new CategoryController($this->admin_category_model);
         $author_controller = new AuthorController($this->admin_author_model, $this->admin_media_model);
         $product_controller = new ProductController($this->admin_media_model, $this->admin_product_model, $this->admin_category_model, $this->admin_author_model);
-        $user_controller = new UserController($this->admin_user_model, $this->admin_category_model, $this->admin_author_model, $this->admin_product_model);
+        $user_controller = new UserController($this->admin_user_model, $this->admin_category_model, $this->admin_author_model, $this->admin_product_model, $this->authentication_helper);
 
         return [
             /*
@@ -140,13 +146,16 @@ class BookStoreRouteHandler implements IRoutes
              * Admin
              */
             '/admin' => [
-                'REDIRECT' => '/admin/dashboard'
+                'REDIRECT' => '/admin/dashboard',
+                'login' => true,
+                'permissions' => 'ADMIN'
             ],
             '/admin/dashboard' => [
                 'GET' => [
                     'controller' => $dashboard_controller,
                     'action' => 'index'
-                ]
+                ],
+                'login' => true
             ],
 
             // Category => thể loại
@@ -154,7 +163,8 @@ class BookStoreRouteHandler implements IRoutes
                 'GET' => [
                     'controller' => $category_controller,
                     'action' => 'index'
-                ]
+                ],
+                'login' => true
             ],
             '/admin/category/create' => [
                 'GET' => [
@@ -165,6 +175,7 @@ class BookStoreRouteHandler implements IRoutes
                     'controller' => $category_controller,
                     'action' => 'store'
                 ],
+                'login' => true
             ],
             '/admin/category/edit' => [
                 'GET' => [
@@ -175,12 +186,14 @@ class BookStoreRouteHandler implements IRoutes
                     'controller' => $category_controller,
                     'action' => 'update'
                 ],
+                'login' => true
             ],
             '/admin/category/delete' => [
                 'GET' => [
                     'controller' => $category_controller,
                     'action' => 'delete'
                 ],
+                'login' => true
             ],
             '/api/v1/admin/category/store' => [
                 'POST' => [
@@ -195,7 +208,8 @@ class BookStoreRouteHandler implements IRoutes
                 'GET' => [
                     'controller' => $author_controller,
                     'action' => 'index'
-                ]
+                ],
+                'login' => true
             ],
             '/admin/author/create' => [
                 'GET' => [
@@ -206,6 +220,7 @@ class BookStoreRouteHandler implements IRoutes
                     'controller' => $author_controller,
                     'action' => 'store'
                 ],
+                'login' => true
             ],
             '/admin/author/edit' => [
                 'GET' => [
@@ -283,25 +298,30 @@ class BookStoreRouteHandler implements IRoutes
                     'controller' => $user_controller,
                     'action' => 'store'
                 ],
-                'login' => true
+//                'login' => true
             ],
             '/admin/user/signin' => [
                 'POST' => [
                     'controller' => $user_controller,
                     'action' => 'signin'
                 ],
-                'login' => true
+//                'login' => true
             ],
         ];
     }
 
     public function getAuthentication(): ?\Ninja\Authentication
     {
-        return null;
+        return $this->authentication_helper;
     }
 
     public function checkPermission($permission): ?bool
     {
-        return null;
+//        return $user = $this->authentication_helper->getUser();
+//
+//        if (!($user instanceof UserEntity))
+//            return false;
+//
+//        return $user->{UserEntity::KEY_USER_TYPE} == UserEntity::ADMIN;
     }
 }

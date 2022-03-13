@@ -4,14 +4,14 @@
 namespace BookStore\Controller\Admin;
 
 
+use BookStore\Controller\BookStoreBaseController;
 use BookStore\Model\Admin\AuthorModel;
 use BookStore\Model\Admin\CategoryModel;
 use BookStore\Model\Admin\ProductModel;
 use BookStore\Model\Admin\UserModel;
 use Ninja\Authentication;
-use Ninja\NJBaseController\NJBaseController;
 
-class UserController extends NJBaseController
+class UserController extends BookStoreBaseController
 {
     private $user_model;
     private $category_model;
@@ -52,5 +52,11 @@ class UserController extends NJBaseController
         else {
             $this->route_redirect("/signin?error=1");
         }
+    }
+    
+    public function signout()
+    {
+        $this->authentication_helper->logout();
+        $this->route_redirect("/");
     }
 }

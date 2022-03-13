@@ -4,15 +4,15 @@
 namespace BookStore\Controller\Admin;
 
 
+use BookStore\Controller\BookStoreBaseController;
 use BookStore\Entity\Admin\ProductEntity;
 use BookStore\Model\Admin\AuthorModel;
 use BookStore\Model\Admin\CategoryModel;
 use BookStore\Model\Admin\MediaModel;
 use BookStore\Model\Admin\ProductModel;
 use Ninja\NinjaException;
-use Ninja\NJBaseController\NJBaseController;
 
-class ProductController extends NJBaseController
+class ProductController extends BookStoreBaseController
 {
     private $media_model;
     private $product_model;

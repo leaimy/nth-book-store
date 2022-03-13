@@ -54,7 +54,7 @@
                     <div class="l-f-o">
                         <div class="l-f-o__pad-box">
                             <h1 class="gl-h1">THÔNG TIN CÁ NHÂN</h1>
-                            <form class="l-f-o__form" action="/admin/user/store" method="post">
+                            <form class="l-f-o__form" action="" method="post">
                                 <div class="gl-s-api">
                                     <div class="u-s-m-b-15">
 

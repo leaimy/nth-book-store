@@ -2,9 +2,9 @@
 
 namespace BookStore\Controller\Admin;
 
-use Ninja\NJBaseController\NJBaseController;
+use BookStore\Controller\BookStoreBaseController;
 
-class DashboardController extends NJBaseController
+class DashboardController extends BookStoreBaseController
 {
     public function index()
     {

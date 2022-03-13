@@ -5,14 +5,14 @@ namespace BookStore\Controller\Admin;
 
 
 
+use BookStore\Controller\BookStoreBaseController;
 use BookStore\Entity\Admin\AuthorEntity;
 use BookStore\Model\Admin\AuthorModel;
 use BookStore\Model\Admin\MediaModel;
 use Ninja\NinjaException;
-use Ninja\NJBaseController\NJBaseController;
 use Ninja\NJTrait\Jsonable;
 
-class AuthorController extends NJBaseController
+class AuthorController extends BookStoreBaseController
 { 
     use Jsonable;
     

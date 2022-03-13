@@ -21,7 +21,7 @@ class UserEntity
     const KEY_VILLAGE = 'village';
     const KEY_DISTRICT = 'district';
     const KEY_PROVINCE = 'province';
-    const KEY_TYPE = 'type';
+    const KEY_USER_TYPE = 'type';
     const KEY_CREATED_AT = 'created_at';
     
     public $id;

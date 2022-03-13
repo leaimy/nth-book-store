@@ -4,18 +4,21 @@
 namespace BookStore\Controller\Client;
 
 
+use BookStore\Controller\BookStoreBaseController;
 use BookStore\Model\Admin\AuthorModel;
 use BookStore\Model\Admin\CategoryModel;
 use BookStore\Model\Admin\ProductModel;
-use Ninja\NJBaseController\NJBaseController;
 
-class ProductClientController extends NJBaseController
+class ProductClientController extends BookStoreBaseController
 {
     private $product_model;
     private $category_model;
     private $author_model;
+    
     public function __construct(ProductModel $product_model, CategoryModel $category_model, AuthorModel $author_model)
     {
+        parent::__construct();
+        
         $this->product_model = $product_model;
         $this->category_model = $category_model;
         $this->author_model = $author_model;

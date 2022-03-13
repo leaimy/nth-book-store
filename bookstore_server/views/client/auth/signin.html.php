@@ -63,7 +63,7 @@
                             <h1 class="gl-h1">ĐĂNG NHẬP</h1>
 
                             <span class="gl-text u-s-m-b-30">Nếu bạn có tài khoản vui lòng đăng nhập.</span>
-                            <form class="l-f-o__form" action="/admin/user/signin" method="post">
+                            <form class="l-f-o__form" action="" method="post">
                                 <div class="gl-s-api">
                                     <div class="u-s-m-b-15">
 

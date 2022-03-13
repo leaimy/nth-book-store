@@ -4,12 +4,12 @@
 namespace BookStore\Controller\Admin;
 
 
+use BookStore\Controller\BookStoreBaseController;
 use BookStore\Model\Admin\CategoryModel;
 use Ninja\NinjaException;
-use Ninja\NJBaseController\NJBaseController;
 use Ninja\NJTrait\Jsonable;
 
-class CategoryController extends NJBaseController
+class CategoryController extends BookStoreBaseController
 {
     use Jsonable;
     

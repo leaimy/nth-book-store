@@ -87,17 +87,17 @@
                                                 <span>Thông tin cá nhân</span></a></li>
                                         <li>
 
-                                            <a href="/signup"><i class="fas fa-user-plus u-s-m-r-6"></i>
+                                            <a href="/auth/sign-up"><i class="fas fa-user-plus u-s-m-r-6"></i>
 
                                                 <span>Tạo tài khoản</span></a></li>
                                         <li>
 
-                                            <a href="/signin"><i class="fas fa-lock u-s-m-r-6"></i>
+                                            <a href="/auth/sign-in"><i class="fas fa-lock u-s-m-r-6"></i>
 
                                                 <span>Đăng nhập</span></a></li>
                                         <li>
 
-                                            <a href="signup.html"><i class="fas fa-lock-open u-s-m-r-6"></i>
+                                            <a href="/auth/logout"><i class="fas fa-lock-open u-s-m-r-6"></i>
 
                                                 <span>Đăng xuất</span></a></li>
                                     </ul>

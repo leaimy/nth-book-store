@@ -77,7 +77,7 @@
 
                                 <!--====== List ======-->
                                 <ul class="ah-list ah-list--design1 ah-list--link-color-white">
-                                    <li class="has-dropdown" data-tooltip="tooltip" data-placement="left" title="<?= ($user ?? null) == null ? 'Tài khoản' : $user->lastname . $user->firstname?>">
+                                    <li class="has-dropdown" data-tooltip="tooltip" data-placement="left" title="<?= ($logged_in_user ?? null) == null ? 'Tài khoản' : $logged_in_user->lastname . ' ' . $logged_in_user->firstname?>">
 
                                         <a><i class="far fa-user-circle"></i></a>
 
@@ -90,21 +90,27 @@
                                                 <a href="/my-profile"><i class="fas fa-user-circle u-s-m-r-6"></i>
 
                                                     <span>Thông tin cá nhân</span></a></li>
+
+                                            <?php if (!$is_logged_in) : ?>
                                             <li>
 
-                                                <a href="/signup"><i class="fas fa-user-plus u-s-m-r-6"></i>
+                                                <a href="/auth/sign-up"><i class="fas fa-user-plus u-s-m-r-6"></i>
 
                                                     <span>Tạo tài khoản</span></a></li>
                                             <li>
 
-                                                <a href="/signin"><i class="fas fa-lock u-s-m-r-6"></i>
+                                                <a href="/auth/sign-in"><i class="fas fa-lock u-s-m-r-6"></i>
 
                                                     <span>Đăng nhập</span></a></li>
+                                            <?php endif; ?>
+                                            
+                                            <?php if ($is_logged_in) : ?>
                                             <li>
 
-                                                <a href="signup.html"><i class="fas fa-lock-open u-s-m-r-6"></i>
+                                                <a href="/auth/logout"><i class="fas fa-lock-open u-s-m-r-6"></i>
 
                                                     <span>Đăng xuất</span></a></li>
+                                            <?php endif; ?>
                                         </ul>
                                         <!--====== End - Dropdown ======-->
                                     </li>
@@ -937,9 +943,12 @@
                                 <!--====== List ======-->
                                 <ul class="ah-list ah-list--design2 ah-list--link-color-white">
                                     
-                                    <?php if($is_admin): ?>
+                                    <?php if($is_logged_in): ?>
+                                    <?php if ($logged_in_user->type == 'ADMIN'): ?>
                                     <li>
-                                        <a href="/admin">ADMIN</a></li>
+                                        <a href="/admin">ADMIN</a>
+                                    </li>
+                                    <?php endif; ?>
                                     <?php endif; ?>
                                     
                                     <li>

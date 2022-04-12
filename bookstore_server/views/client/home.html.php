@@ -370,8 +370,9 @@
                 <div class="col-lg-12">
                     <div class="section__text-wrap">
                         <h1 class="section__heading u-c-secondary u-s-m-b-12">TÁC GIẢ NỔI BẬT</h1>
-
+<?php if(count($author_random)>0):?>
                         <span class="section__span u-c-silver"><?=mb_strtoupper($author_random[0]->name)?></span>
+                        <?php endif;?>
                     </div>
                 </div>
             </div>

@@ -11,6 +11,7 @@ use BookStore\Controller\Client\AuthController;
 use BookStore\Controller\Client\HomeController;
 use BookStore\Controller\Client\ProductClientController;
 use BookStore\Controller\Client\ProfileController;
+use BookStore\Controller\Client\CartController;
 use BookStore\Entity\Admin\AuthorEntity;
 use BookStore\Entity\Admin\CategoryEntity;
 use BookStore\Entity\Admin\MediaEntity;
@@ -162,6 +163,7 @@ class BookStoreRouteHandler implements IRoutes
         $home_controller = new HomeController($this->admin_product_model, $this->admin_category_model, $this->admin_author_model);
         $profile_controller = new  ProfileController($this->admin_product_model, $this->admin_category_model, $this->admin_author_model);
         $product_client_controller = new  ProductClientController($this->admin_product_model, $this->admin_category_model, $this->admin_author_model);
+        $cart_client_controller = new CartController($this->admin_product_model, $this->admin_category_model);
         
         return [
             '/' => [
@@ -200,6 +202,12 @@ class BookStoreRouteHandler implements IRoutes
                 'GET' => [
                     'controller' => $product_client_controller,
                     'action' => 'render_product_by_author_page'
+                ]
+            ],
+            '/cart/add' => [
+                'POST' => [
+                    'controller' => $cart_client_controller,
+                    'action' => 'add_to_cart'
                 ]
             ],
             

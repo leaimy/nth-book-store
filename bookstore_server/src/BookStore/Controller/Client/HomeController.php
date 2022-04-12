@@ -33,7 +33,22 @@ class HomeController extends BookStoreBaseController
         $author_random4 = $this->author_model->random_author(4);
         $category_random10 = $this->category_model->random_category(10);
         $author_random10 = $this->author_model->random_author(10);
+        if(count($author_random4)>0){
         $product_author = $this->product_model->random_product_by_author( $author_random4[0]->id,4);
+        }else {
+            $product_author = [];
+        }
+
+        $cart = $_SESSION['cart'] ?? [];
+        $cart_products = [];
+        $total = 0;
+
+        foreach ($cart as $item) {
+            $p = $this->product_model->get_by_id_product($item['product_id']);
+            $p->cart_quantity = $item['quantity'];
+            $total += $p->sale_price * $p->cart_quantity;
+            $cart_products[] = $p;
+        }
         
         
         $this->view_handler->render('client/home.html.php',[
@@ -46,6 +61,8 @@ class HomeController extends BookStoreBaseController
             'category_random10' => $category_random10,
             'author_random10' => $author_random10,
             'product_author'=> $product_author,
+            'cart_products' => $cart_products,
+            'total' => $total,
         ]);
     }
 

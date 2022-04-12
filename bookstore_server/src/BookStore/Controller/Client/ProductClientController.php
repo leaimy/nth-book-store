@@ -30,11 +30,24 @@ class ProductClientController extends BookStoreBaseController
         $product = $this->product_model->get_by_id_product($id);
         $category_random10 = $this->category_model->random_category(10);
         $author_random10 = $this->author_model->random_author(10);
+
+        $cart = $_SESSION['cart'] ?? [];
+        $cart_products = [];
+        $total = 0;
+
+        foreach ($cart as $item) {
+            $p = $this->product_model->get_by_id_product($item['product_id']);
+            $p->cart_quantity = $item['quantity'];
+            $total += $p->sale_price * $p->cart_quantity;
+            $cart_products[] = $p;
+        }
         
         $this->view_handler->render('client/product/product-detail.html.php', [
             'product' => $product,
             'category_random10' => $category_random10,
             'author_random10' => $author_random10,
+            'cart_products' => $cart_products,
+            'total' => $total,
         ]);
     }
     
@@ -44,10 +57,23 @@ class ProductClientController extends BookStoreBaseController
         $category_random10 = $this->category_model->random_category(10);
         $author_random10 = $this->author_model->random_author(10);
 
+        $cart = $_SESSION['cart'] ?? [];
+        $cart_products = [];
+        $total = 0;
+
+        foreach ($cart as $item) {
+            $p = $this->product_model->get_by_id_product($item['product_id']);
+            $p->cart_quantity = $item['quantity'];
+            $total += $p->sale_price * $p->cart_quantity;
+            $cart_products[] = $p;
+        }
+
         $this->view_handler->render('client/product/product-all.html.php', [
             'product_all' => $product_all,
             'category_random10' => $category_random10,
             'author_random10' => $author_random10,
+            'cart_products' => $cart_products,
+            'total' => $total,
         ]);
     }
 
@@ -58,10 +84,23 @@ class ProductClientController extends BookStoreBaseController
         $category_random10 = $this->category_model->random_category(10);
         $author_random10 = $this->author_model->random_author(10);
 
+        $cart = $_SESSION['cart'] ?? [];
+        $cart_products = [];
+        $total = 0;
+
+        foreach ($cart as $item) {
+            $p = $this->product_model->get_by_id_product($item['product_id']);
+            $p->cart_quantity = $item['quantity'];
+            $total += $p->sale_price * $p->cart_quantity;
+            $cart_products[] = $p;
+        }
+
         $this->view_handler->render('client/product/product-by-category.html.php', [
             'product_by_category' => $product_by_category,
             'category_random10' => $category_random10,
             'author_random10' => $author_random10,
+            'cart_products' => $cart_products,
+            'total' => $total,
         ]);
     }
 
@@ -72,10 +111,23 @@ class ProductClientController extends BookStoreBaseController
         $category_random10 = $this->category_model->random_category(10);
         $author_random10 = $this->author_model->random_author(10);
 
+        $cart = $_SESSION['cart'] ?? [];
+        $cart_products = [];
+        $total = 0;
+
+        foreach ($cart as $item) {
+            $p = $this->product_model->get_by_id_product($item['product_id']);
+            $p->cart_quantity = $item['quantity'];
+            $total += $p->sale_price * $p->cart_quantity;
+            $cart_products[] = $p;
+        }
+
         $this->view_handler->render('client/product/product-by-author.html.php', [
             'product_by_author' => $product_by_author,
             'category_random10' => $category_random10,
             'author_random10' => $author_random10,
+            'cart_products' => $cart_products,
+            'total' => $total,
         ]);
     }
 

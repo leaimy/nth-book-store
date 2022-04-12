@@ -34,10 +34,13 @@ class Authentication
          */
         if (!password_verify($password, $user[0]->$passwordColumn))
             return false;
+
+        $cart = $_SESSION['cart'] ?? '';
         
         session_regenerate_id();
         $_SESSION['username'] = $username;
         $_SESSION['password'] = $user[0]->$passwordColumn;
+        $_SESSION['cart'] = $cart;
 
         return true;
     }

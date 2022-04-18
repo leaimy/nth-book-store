@@ -11,6 +11,7 @@ try {
     define('ROOT_DIR', dirname(__DIR__ . '/../../'));
     date_default_timezone_set('Asia/Ho_Chi_Minh');
     ini_set('max_execution_time', '10000');
+    session_start();
 
     $route = strtok($_SERVER['REQUEST_URI'], '?');
     $routes_handler = new \BookStore\BookStoreRouteHandler();

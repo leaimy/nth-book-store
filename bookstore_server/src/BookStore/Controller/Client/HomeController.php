@@ -6,6 +6,7 @@ use BookStore\Controller\BookStoreBaseController;
 use BookStore\Model\Admin\AuthorModel;
 use BookStore\Model\Admin\CategoryModel;
 use BookStore\Model\Admin\ProductModel;
+use BookStore\Utils\CartManager;
 
 class HomeController extends BookStoreBaseController
 {
@@ -39,16 +40,12 @@ class HomeController extends BookStoreBaseController
             $product_author = [];
         }
 
-        $cart = $_SESSION['cart'] ?? [];
-        $cart_products = [];
-        $total = 0;
 
-        foreach ($cart as $item) {
-            $p = $this->product_model->get_by_id_product($item['product_id']);
-            $p->cart_quantity = $item['quantity'];
-            $total += $p->sale_price * $p->cart_quantity;
-            $cart_products[] = $p;
-        }
+        $cartManager = new CartManager();
+        $cart_products = $cartManager->get_products_cart($this->product_model);
+        $total = $cartManager->get_subtotal_products_cart($cart_products);
+
+        
         
         
         $this->view_handler->render('client/home.html.php',[

@@ -10,8 +10,10 @@ use BookStore\Model\Admin\AuthorModel;
 use BookStore\Model\Admin\CategoryModel;
 use BookStore\Model\Admin\UserModel;
 use BookStore\Controller\BookStoreBaseController;
+use BookStore\Model\Admin\ProductModel;
 use Ninja\Authentication;
 use Ninja\NinjaException;
+use BookStore\Utils\CartManager;
 
 class AuthController extends BookStoreBaseController
 {
@@ -19,8 +21,9 @@ class AuthController extends BookStoreBaseController
     private $user_model;
     private $category_model;
     private $author_model;
+    private $product_model;
 
-    public function __construct(Authentication $authentication_helper, UserModel $user_model, CategoryModel $category_model, AuthorModel $author_model)
+    public function __construct(Authentication $authentication_helper, UserModel $user_model, CategoryModel $category_model, AuthorModel $author_model, ProductModel $product_model)
     {
         parent::__construct();
 
@@ -28,6 +31,7 @@ class AuthController extends BookStoreBaseController
         $this->user_model = $user_model;
         $this->category_model = $category_model;
         $this->author_model = $author_model;
+        $this->product_model = $product_model;
     }
     
     public function sign_in()
@@ -39,13 +43,20 @@ class AuthController extends BookStoreBaseController
             $error_message = 'Thông tin đăng nhập không hợp lệ';
         }
 
+        $cartManager = new CartManager();
+        $cart_products = $cartManager->get_products_cart($this->product_model);
+        $total = $cartManager->get_subtotal_products_cart($cart_products);
+
+
         $category_random10 = $this->category_model->random_category(10);
         $author_random10 = $this->author_model->random_author(10);
         $this->view_handler->render('client/auth/signin.html.php',[
             'category_random10' => $category_random10,
             'author_random10' => $author_random10,
             'is_error' => $is_error,
-            'error_message' => $error_message
+            'error_message' => $error_message,
+            'cart_products' => $cart_products,
+            'total' => $total,
         ]);
     }
 
@@ -53,9 +64,18 @@ class AuthController extends BookStoreBaseController
     {
         $category_random10 = $this->category_model->random_category(10);
         $author_random10 = $this->author_model->random_author(10);
+
+
+        $cartManager = new CartManager();
+        $cart_products = $cartManager->get_products_cart($this->product_model);
+        $total = $cartManager->get_subtotal_products_cart($cart_products);
+
+
         $this->view_handler->render('client/auth/signup.html.php',[
             'category_random10' => $category_random10,
             'author_random10' => $author_random10,
+            'cart_products' => $cart_products,
+            'total' => $total,
         ]);
     }
 

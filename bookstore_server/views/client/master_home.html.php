@@ -1028,7 +1028,7 @@
                                         <?php foreach($cart_products as $item): ?>
                                             <?php $count++;?>
                                             <?php endforeach; ?>
-                                            <span class="total-item-round"><?=$count?></span></a>
+                                            <span $id="ct" class="total-item-round"><?=$count?></span></a>
                                            
                                         <!--====== Dropdown ======-->
 
@@ -1041,7 +1041,7 @@
                                             <?php foreach($cart_products as $item): ?>
                                                 
                                                 <!--====== Card for mini cart ======-->
-                                                <div class="card-mini-product">
+                                                <div id="cart-pt-<?= $item->id?>" class="card-mini-product">
                                                     <div class="mini-product">
                                                         <div class="mini-product__image-wrapper">
 
@@ -1060,10 +1060,12 @@
 
                                                             <span class="mini-product__quantity"><?= $item->cart_quantity?> x</span>
 
-                                                            <span class="mini-product__price"><?= $item->sale_price?>VND</span></div>
+                                                            <span class="mini-product__price"> <?= $item->sale_price?>VND</span></div>
                                                     </div>
 
-                                                    <a class="mini-product__delete-link far fa-trash-alt"></a>
+
+
+                                                    <a data-id="<?= $item->id?>" id="submit-delete-<?= $item->id?>" class="mini-product__delete-link far fa-trash-alt"></a>
                                                 </div>
                                                 <!--====== End - Card for mini cart ======-->
 
@@ -1077,14 +1079,14 @@
                                             <div class="mini-product-stat">
                                                 <div class="mini-total">
 
-                                                    <span class="subtotal-text">SUBTOTAL</span>
+                                                    <span class="subtotal-text">TỔNG</span>
 
-                                                    <span class="subtotal-value"><?= $total; ?>VND</span></div>
+                                                    <span id="stotal" class="subtotal-value"><?= $total; ?>VND</span></div>
                                                 <div class="mini-action">
 
-                                                    <a class="mini-link btn--e-brand-b-2" href="checkout.html">PROCEED TO CHECKOUT</a>
+                                                    <a class="mini-link btn--e-brand-b-2" href="/cart/checkout">TIẾN HÀNH THANH TOÁN</a>
 
-                                                    <a class="mini-link btn--e-transparent-secondary-b-2" href="cart.html">VIEW CART</a></div>
+                                                    <a class="mini-link btn--e-transparent-secondary-b-2" href="/cart/viewcart">XEM GIỎ HÀNG</a></div>
                                             </div>
                                             <!--====== End - Mini Product Statistics ======-->
                                         </div>
@@ -1541,5 +1543,12 @@
         </div>
     </div>
 </noscript>
+
+<script src="/static/js/script.js">
+   
+</script>
 </body>
 </html>
+
+
+

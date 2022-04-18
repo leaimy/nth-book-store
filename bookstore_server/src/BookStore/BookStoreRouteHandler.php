@@ -163,7 +163,7 @@ class BookStoreRouteHandler implements IRoutes
         $home_controller = new HomeController($this->admin_product_model, $this->admin_category_model, $this->admin_author_model);
         $profile_controller = new  ProfileController($this->admin_product_model, $this->admin_category_model, $this->admin_author_model);
         $product_client_controller = new  ProductClientController($this->admin_product_model, $this->admin_category_model, $this->admin_author_model);
-        $cart_client_controller = new CartController($this->admin_product_model, $this->admin_category_model);
+        $cart_client_controller = new CartController($this->admin_product_model, $this->admin_category_model, $this->admin_author_model);
         
         return [
             '/' => [
@@ -210,13 +210,46 @@ class BookStoreRouteHandler implements IRoutes
                     'action' => 'add_to_cart'
                 ]
             ],
+            '/cart/checkout' => [
+                'GET' => [
+                    'controller' => $cart_client_controller,
+                    'action' => 'render_checkout'
+                ]
+            ],
+            '/cart/viewcart' => [
+                'GET' => [
+                    'controller' => $cart_client_controller,
+                    'action' => 'render_viewcart'
+                ]
+            ],
+
+            '/api/v1/cart/delete' => [
+                'POST' => [
+                    'controller' => $cart_client_controller,
+                    'action' => 'delete_product_cart'
+                ]
+            ],
+
+            '/cart/delete-all' => [
+                'GET' => [
+                    'controller' => $cart_client_controller,
+                    'action' => 'delete_cart'
+                ]
+            ],
+
+            '/cart/update' => [
+                'POST' => [
+                    'controller' => $cart_client_controller,
+                    'action' => 'update_cart'
+                ]
+            ],
             
         ];
     }
 
     public function get_auth_routes(): array
     {
-        $auth_controller = new AuthController($this->authentication_helper, $this->admin_user_model, $this->admin_category_model, $this->admin_author_model);
+        $auth_controller = new AuthController($this->authentication_helper, $this->admin_user_model, $this->admin_category_model, $this->admin_author_model, $this->admin_product_model);
 
         return [
             '/auth/sign-in' => [

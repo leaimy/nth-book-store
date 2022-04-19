@@ -1084,7 +1084,7 @@
                                                     <span id="stotal" class="subtotal-value"><?= $total; ?>VND</span></div>
                                                 <div class="mini-action">
 
-                                                    <a class="mini-link btn--e-brand-b-2" href="/cart/checkout">TIẾN HÀNH THANH TOÁN</a>
+                                                    <a class="mini-link btn--e-brand-b-2" href="/checkout">TIẾN HÀNH THANH TOÁN</a>
 
                                                     <a class="mini-link btn--e-transparent-secondary-b-2" href="/cart/viewcart">XEM GIỎ HÀNG</a></div>
                                             </div>

@@ -182,7 +182,7 @@
 
                                 <!--====== Select Box ======-->
 
-                                <label class="gl-label" for="billing-country">TỈNH/THÀNH PHỐ *</label><select class="select-box select-box--primary-style" id="billing-country" data-bill="">
+                                <label class="gl-label" for="province">TỈNH/THÀNH PHỐ *</label><select class="select-box select-box--primary-style" id="province" data-bill="">
                                     <option selected value="">Choose Country</option>
                                     <option value="uae">United Arab Emirate (UAE)</option>
                                     <option value="uk">United Kingdom (UK)</option>
@@ -195,13 +195,11 @@
 
                             <!--====== Town / City ======-->
                             <div class="u-s-m-b-15">
-                            <label class="gl-label" for="billing-town-city">QUẬN/HUYỆN *</label><select class="select-box select-box--primary-style" id="billing-town-city" data-bill="">
-                                    <option selected value="">Choose State/Province</option>
-                                    <option value="al">Alabama</option>
-                                    <option value="al">Alaska</option>
-                                    <option value="ny">New York</option>
+                            <label class="gl-label" for="district">QUẬN/HUYỆN *</label><select class="select-box select-box--primary-style" id="district" data-bill="">
+                                    <option selected value="">Vui lòng chọn tỉnh</option>
+                                   
                                 </select>
-                                
+                                </div>
                             <!--====== End - Town / City ======-->
 
 
@@ -210,11 +208,8 @@
 
                                 <!--====== Select Box ======-->
 
-                                <label class="gl-label" for="billing-state">PHƯỜNG/XÃ *</label><select class="select-box select-box--primary-style" id="billing-state" data-bill="">
-                                    <option selected value="">Choose State/Province</option>
-                                    <option value="al">Alabama</option>
-                                    <option value="al">Alaska</option>
-                                    <option value="ny">New York</option>
+                                <label class="gl-label" for="ward">PHƯỜNG/XÃ *</label><select class="select-box select-box--primary-style" id="ward" data-bill="">
+                                    <option selected value="">Vui lòng chọn quận/huyện</option>
                                 </select>
                                 <!--====== End - Select Box ======-->
                             </div>

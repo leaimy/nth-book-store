@@ -9,6 +9,7 @@ include __DIR__ . '/../includes/load_template.php';
 
 try {
     define('ROOT_DIR', dirname(__DIR__ . '/../../'));
+    // define('SRC_DIR', dirname(__DIR__ . '/../../src/'));
     date_default_timezone_set('Asia/Ho_Chi_Minh');
     ini_set('max_execution_time', '10000');
     session_start();

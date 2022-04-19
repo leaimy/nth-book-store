@@ -12,6 +12,7 @@ use BookStore\Controller\Client\HomeController;
 use BookStore\Controller\Client\ProductClientController;
 use BookStore\Controller\Client\ProfileController;
 use BookStore\Controller\Client\CartController;
+use BookStore\Controller\Client\CheckoutController;
 use BookStore\Entity\Admin\AuthorEntity;
 use BookStore\Entity\Admin\CategoryEntity;
 use BookStore\Entity\Admin\MediaEntity;
@@ -164,6 +165,7 @@ class BookStoreRouteHandler implements IRoutes
         $profile_controller = new  ProfileController($this->admin_product_model, $this->admin_category_model, $this->admin_author_model);
         $product_client_controller = new  ProductClientController($this->admin_product_model, $this->admin_category_model, $this->admin_author_model);
         $cart_client_controller = new CartController($this->admin_product_model, $this->admin_category_model, $this->admin_author_model);
+        $checkout_client_controller = new CheckoutController($this->admin_product_model, $this->admin_category_model, $this->admin_author_model);
         
         return [
             '/' => [
@@ -210,12 +212,7 @@ class BookStoreRouteHandler implements IRoutes
                     'action' => 'add_to_cart'
                 ]
             ],
-            '/cart/checkout' => [
-                'GET' => [
-                    'controller' => $cart_client_controller,
-                    'action' => 'render_checkout'
-                ]
-            ],
+           
             '/cart/viewcart' => [
                 'GET' => [
                     'controller' => $cart_client_controller,
@@ -241,6 +238,27 @@ class BookStoreRouteHandler implements IRoutes
                 'POST' => [
                     'controller' => $cart_client_controller,
                     'action' => 'update_cart'
+                ]
+            ],
+
+            '/checkout' => [
+                'GET' => [
+                    'controller' => $checkout_client_controller,
+                    'action' => 'render_checkout'
+                ]
+            ],
+
+            '/api/v1/checkout/get-province' => [
+                'GET' => [
+                    'controller' => $checkout_client_controller,
+                    'action' => 'get_province'
+                ]
+            ],
+
+            '/api/v1/checkout/get-province-detail' => [
+                'GET' => [
+                    'controller' => $checkout_client_controller,
+                    'action' => 'get_province_detail'
                 ]
             ],
             

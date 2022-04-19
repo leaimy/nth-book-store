@@ -89,24 +89,7 @@ class CartController extends BookStoreBaseController
 
     }
 
-    public function render_checkout()
-    {
-
-        $category_random10 = $this->category_model->random_category(10);
-        $author_random10 = $this->author_model->random_author(10);
-
-        $cartManager = new CartManager();
-        $cart_products = $cartManager->get_products_cart($this->product_model);
-        $total = $cartManager->get_subtotal_products_cart($cart_products);
-
-        $this->view_handler->render('client/cart/checkout.html.php', [
-            'category_random10' => $category_random10,
-            'author_random10' => $author_random10,
-            'cart_products' => $cart_products,
-            'total' => $total,
-        ]);
-    }
-
+    
     public function render_viewcart()
     {
 
